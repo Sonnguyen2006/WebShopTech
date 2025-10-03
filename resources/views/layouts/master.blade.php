@@ -27,8 +27,8 @@
     <!-- Nội dung navbar -->
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <!-- Form search (ra giữa) -->
-      <form class="d-flex me-4" style="width: 400px;">
-        <input class="form-control me-2" type="search" placeholder="Bạn muốn mua gì hôm nay?">
+      <form action="{{route ('products.search')}}" method="get" class="d-flex me-4" style="width: 400px;">
+        <input class="form-control me-2" type="search" name="keyword" placeholder="Bạn muốn mua gì hôm nay?">
         <button class="btn btn-light" type="submit">Tìm</button>
       </form>
 
