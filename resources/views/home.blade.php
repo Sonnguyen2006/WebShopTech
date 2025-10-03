@@ -1,29 +1,81 @@
-<div class="container mt-4">
-    <div class="row">
-        @foreach($products as $product)
-        <div class="col-md-3 mb-4">
-            <div class="card h-100 shadow-sm border-0">
-                <!-- Ảnh sản phẩm -->
-                <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
+@extends('layouts.master')
+@section('content')
+<link rel="stylesheet" href="{{ asset('resources/css/home.css') }}">
 
-                <!-- Nội dung -->
-                <div class="card-body">
-                    <!-- Tên sản phẩm -->
-                    <h6 class="card-title text-truncate">{{ $product->name }}</h6>
-
-                    <!-- Giá -->
-                    <div class="mb-2">
-                        @if($product->discount_price)
-                            <span class="fw-bold text-danger">{{ number_format($product->discount_price, 0, ',', '.') }}đ</span>
-                            <span class="text-muted text-decoration-line-through">{{ number_format($product->price, 0, ',', '.') }}đ</span>
-                            <span class="badge bg-danger ms-1">-{{ $product->discount_percent }}%</span>
-                        @else
-                            <span class="fw-bold text-dark">{{ number_format($product->price, 0, ',', '.') }}đ</span>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endforeach
+<!-- Content -->
+<div class="container mt-3">
+  <div class="row">
+    <!-- Sidebar category -->
+    <div class="col-md-3">
+      <div class="category-menu shadow-sm">
+        <div class="category-item"><a href="#"> Điện thoại</a></div>
+        <div class="category-item"><a href="#"> Laptop</a></div>
+        <div class="category-item"><a href="#"> Tai nghe</a></div>
+        <div class="category-item"><a href="#"> Màn hình</a></div>
+        <div class="category-item"><a href="#"> Khuyến mãi</a></div>
+      </div>
     </div>
+
+    <!-- Banner & Slider -->
+    <div class="col-md-8">
+      <!-- Carousel -->
+      <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{{asset('public/images/banner/1.png')}}" class="d-block w-100" alt="banner">
+          </div>
+          <div class="carousel-item">
+            <img src="{{asset('public/images/banner/2.png')}}" class="d-block w-100" alt="banner">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
+<div class="container mt-4">
+  <div class="row">
+    @foreach($products as $product)
+    <div class="col-md-3 mb-4 d-flex">
+      <div class="card h-100 shadow-sm w-100">
+        <img src="{{ asset('public/images/' . $product->product_image) }}"
+          class="card-img-top"
+          alt="{{ $product->product_name }}">
+
+        <div class="card-body d-flex flex-column">
+          <!-- Tên sản phẩm -->
+          <h6 class="card-title product-title">
+            {{ $product->product_name }}
+          </h6>
+
+          <!-- Giá -->
+          <p class="fw-bold text-danger mb-2">
+            {{ number_format($product->product_price, 0, ',', '.') }}đ
+          </p>
+
+          <!-- Rating + Yêu thích -->
+          <div class="mt-auto d-flex align-items-center d-flex justify-content-between">
+            <div class="rating"><span class="text-warning me-1">★</span>
+              <span>{{ $product->rating ?? 5 }}</span>
+            </div>
+
+            <!-- Yêu thích -->
+            <div class="product-favorate">
+                <a href="#" class="ms-2 text-primary small">Yêu thích</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    @endforeach
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+@endsection
