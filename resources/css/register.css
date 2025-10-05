@@ -1,0 +1,32 @@
+/* Gói form trong một class riêng để không ảnh hưởng master layout */
+.register-page form {
+    background: #fff;
+    padding: 5px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 350px;
+    margin: 50px auto;
+}
+
+.register-page label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.register-page input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.register-page button {
+    width: 100%;
+    background: #007bff;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+}

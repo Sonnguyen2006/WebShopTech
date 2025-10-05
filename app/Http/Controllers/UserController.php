@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 
+
 use App\Models\UserModel;
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -26,6 +29,7 @@ class UserController extends Controller
             'email'=>$request->email,
             'password'=>Hash::make($request->password),
         ]);
+         return redirect('/register')->with('success', 'Đăng ký thành công! Chúc mừng bạn!');
 
       
     }
