@@ -15,6 +15,7 @@
         {{ number_format($product->product_price, 0, ',', '.') }}đ
       </h4>
       <p>{{ $product->product_description }}</p>
+      
 
       <a href="{{ url()->previous() }}" class="btn btn-outline-secondary mt-3">⬅ Quay lại</a>
     </div>
