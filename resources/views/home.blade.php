@@ -40,62 +40,42 @@
 </div>
 <div class="container main mt-4">
   <div class="row">
-    <div id="productCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-wrap="false">
+    <div id="productCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
       <div class="carousel-inner">
-
-        {{-- Slide 1 --}}
         <div class="carousel-item active">
-          <div class="row row-cols-1 row-cols-md-4 g-4">
-            @foreach($products->slice(0, 8) as $product) {{-- 8 sản phẩm = 2 hàng (mỗi hàng 4) --}}
-            <div class="col">
-              <div class="card h-100" onclick="window.location.href='{{ url('/product/' . $product->product_id) }}'" style="cursor:pointer;">
-                <img src="{{ asset('public/images/' . $product->product_image) }}" class="card-img-top" alt="{{ $product->product_name }}">
-                <div class="card-body d-flex flex-column">
-                  <h6 class="card-title">{{ $product->product_name }}</h6>
-                  <p class="fw-bold text-danger">{{ number_format($product->product_price, 0, ',', '.') }}đ</p>
+          <div class="carousel-wrapper">
+            <div class="row row-cols-1 row-cols-md-4 g-4" id="productContainer">
+              @foreach($products as $product)
+              <div class="col product-card">
+                <div class="card h-100">
+                  <img src="{{ asset('public/images/' . $product->product_image) }}" class="card-img-top" alt="{{ $product->product_name }}">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ $product->product_name }}</h5>
+                    <p class="text-muted">{{ Str::limit($product->description, 50) }}</p>
+                    <p>⭐ {{ $product->rating }}</p>
+                    <p class="fw-bold">{{ number_format($product->product_price, 0, ',', '.') }}₫</p>
+                  </div>
                 </div>
               </div>
+              @endforeach
             </div>
-            @endforeach
           </div>
         </div>
-
-        {{-- Slide 2 --}}
-        <div class="carousel-item">
-          <div class="row row-cols-1 row-cols-md-4 g-4">
-            @foreach($products->slice(8, 8) as $product)
-            <div class="col">
-              <div class="card h-100" onclick="window.location.href='{{ url('/product/' . $product->product_id) }}'" style="cursor:pointer;">
-                <img src="{{ asset('public/images/' . $product->product_image) }}" class="card-img-top" alt="{{ $product->product_name }}">
-                <div class="card-body d-flex flex-column">
-                  <h6 class="card-title">{{ $product->product_name }}</h6>
-                  <p class="fw-bold text-danger">{{ number_format($product->product_price, 0, ',', '.') }}đ</p>
-                </div>
-              </div>
-            </div>
-            @endforeach
-          </div>
-        </div>
-
       </div>
 
-      {{-- Nút điều hướng --}}
-      <!-- Prev -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Previous</span>
-</button>
-<button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Next</span>
-</button>
-
-
+      <!-- Nút điều hướng -->
+      <button class="carousel-control-prev" type="button" id="prevBtn">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" id="nextBtn">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
   </div>
 </div>
 
 
-
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('resources/js/home.js')}}"></script>
 @endsection
