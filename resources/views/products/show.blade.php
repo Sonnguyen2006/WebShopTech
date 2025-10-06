@@ -15,7 +15,12 @@
         {{ number_format($product->product_price, 0, ',', '.') }}đ
       </h4>
       <p>{{ $product->product_description }}</p>
-      
+      <form action="{{ route('cart.add', $product->product_id) }}" method="POST" class="mt-4">
+        @csrf
+        <button type="submit" class="btn btn-danger btn-lg">
+          <i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng
+        </button>
+      </form>
 
       <a href="{{ url()->previous() }}" class="btn btn-outline-secondary mt-3">⬅ Quay lại</a>
     </div>
