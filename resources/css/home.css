@@ -111,7 +111,23 @@ body {
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* thêm bóng cho đẹp */
             z-index: 2; /* nổi lên trên các thẻ khác */
         }
-        
+        .carousel-wrapper {
+            overflow: hidden; /* ẩn phần trượt ra ngoài */
+            width: 100%;
+            position: relative;
+        }
+
+        #productContainer.product-track {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .product-card {
+            flex: 0 0 calc(100% / 4); /* 4 sản phẩm mỗi hàng, đổi thành /8 nếu muốn 8 sp */
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
 
 
         
