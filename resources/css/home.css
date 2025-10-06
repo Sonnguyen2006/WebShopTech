@@ -1,6 +1,9 @@
 body {
             background-color: #f8f9fa;
         }
+        .row{
+            margin: 20px;
+        }
         .navbar {
             background-color: #d70018;
         }
@@ -64,8 +67,48 @@ body {
         .product-favorate:hover {
             background-color: rgba(47, 4, 4, 0.725);
         }
+        
 
         .product-favorate a {
             text-decoration: none; /* bỏ gạch chân */
             color: #000;
         }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-size: 100% 75%;
+            background-color: gray;
+            padding: 25px;
+            border-radius: 50%;
+            width: auto; 
+        }
+        .carousel-control-prev,
+        .carousel-control-next {
+            z-index: 9999 !important; /* cao hơn cả card */
+        }
+
+        .carousel-control-prev {
+            left: -40px;              /* đẩy mũi tên ra ngoài rìa bên trái */
+        }
+
+        .carousel-control-next {
+            right: -40px;             /* đẩy mũi tên ra ngoài rìa bên phải */
+        }
+
+        .carousel-control-prev-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='black' d='M5.25 0L6.25 1 2.5 4l3.75 3-1 1L0.5 4 5.25 0z'/%3E%3C/svg%3E");
+        }
+
+        .carousel-control-next-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='black' d='M2.75 0L1.75 1 5.5 4l-3.75 3 1 1L7.5 4 2.75 0z'/%3E%3C/svg%3E");
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1;
+        }
+
+        .card:hover {
+            transform: scale(1.03); /* phóng to 5% */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* thêm bóng cho đẹp */
+            z-index: 2; /* nổi lên trên các thẻ khác */
+        }
+        

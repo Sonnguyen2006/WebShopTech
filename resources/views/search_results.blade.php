@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('resources/css/home.css') }}">
 <div class="container mt-4">
     <h4>Kết quả tìm kiếm cho: {{ $keyword }}</h4>
 
