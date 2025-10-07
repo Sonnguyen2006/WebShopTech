@@ -21,7 +21,7 @@ body {
     padding: 40px 50px;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-    width: 350px;
+    width: 10px;
     text-align: center;
 }
 
@@ -88,3 +88,4 @@ body {
     margin: 0;
     padding-left: 20px;
 }
+

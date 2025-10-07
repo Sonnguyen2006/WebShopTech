@@ -9,6 +9,7 @@
     <div class="col-md-3">
       <div class="category-menu shadow-sm">
         <div class="category-menu shadow-sm">
+
           <div class="category-item">
             <a href="{{ route('category.show', 'dien-thoai') }}" class="{{ isset($categoryName) && $categoryName=='Điện thoại' ? 'active' : '' }}">Điện thoại</a>
           </div>
@@ -22,7 +23,7 @@
             <a href="{{ route('category.show', 'man-hinh') }}" class="{{ isset($categoryName) && $categoryName=='Màn hình' ? 'active' : '' }}">Màn hình</a>
           </div>
           <div class="category-item">
-            <a href="{{ route('category.show', 'khuyen-mai') }}" class="{{ isset($categoryName) && $categoryName=='Khuyến mãi' ? 'active' : '' }}">Khuyến mãi</a>
+            <a href="{{ route('promotion') }}" class="{{ isset($categoryName) && $categoryName=='Khuyến mãi' ? 'active' : '' }}">Khuyến mãi</a>
           </div>
         </div>
       </div>
@@ -52,7 +53,7 @@
 </div>
 <div class="container main mt-4">
   <div class="row">
-    <div id="productCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-wrap="false">
+    <div id="productCarousel" class="carousel slide" data-bs-wrap="false">
       <div class="carousel-inner">
 
         {{-- Slide 1 --}}
@@ -61,10 +62,22 @@
             @foreach($products->slice(0, 8) as $product) {{-- 8 sản phẩm = 2 hàng (mỗi hàng 4) --}}
             <div class="col">
               <div class="card h-100" onclick="window.location.href='{{ url('/product/' . $product->product_id) }}'" style="cursor:pointer;">
-                <img src="{{ asset('public/images/' . $product->product_image) }}" class="card-img-top" alt="{{ $product->product_name }}">
+<img src="{{ asset('public/images/' . $product->product_image) }}" class="card-img-top" alt="{{ $product->product_name }}">
                 <div class="card-body d-flex flex-column">
                   <h6 class="card-title">{{ $product->product_name }}</h6>
-                  <p class="fw-bold text-danger">{{ number_format($product->product_price, 0, ',', '.') }}đ</p>
+                  <p>
+                    @if($product->discount > 0)
+                    <span class="badge bg-danger">Khuyến mãi {{ $product->discount }}%</span>
+                    @endif
+                  </p>
+                  <p class="fw-bold">
+                    @if($product->discount > 0)
+                    {{ number_format($product->product_price * (1 - $product->discount/100), 0, ',', '.') }}₫
+                    <span class="text-decoration-line-through text-muted">{{ number_format($product->product_price, 0, ',', '.') }}₫</span>
+                    @else
+                    {{ number_format($product->product_price, 0, ',', '.') }}₫
+                    @endif
+                  </p>
                 </div>
               </div>
             </div>
@@ -81,7 +94,19 @@
                 <img src="{{ asset('public/images/' . $product->product_image) }}" class="card-img-top" alt="{{ $product->product_name }}">
                 <div class="card-body d-flex flex-column">
                   <h6 class="card-title">{{ $product->product_name }}</h6>
-                  <p class="fw-bold text-danger">{{ number_format($product->product_price, 0, ',', '.') }}đ</p>
+                  <p>
+                    @if($product->discount > 0)
+                    <span class="badge bg-danger">Khuyến mãi {{ $product->discount }}%</span>
+                    @endif
+                  </p>
+                  <p class="fw-bold">
+                    @if($product->discount > 0)
+                    {{ number_format($product->product_price * (1 - $product->discount/100), 0, ',', '.') }}₫
+                    <span class="text-decoration-line-through text-muted">{{ number_format($product->product_price, 0, ',', '.') }}₫</span>
+                    @else
+                    {{ number_format($product->product_price, 0, ',', '.') }}₫
+                    @endif
+                  </p>
                 </div>
               </div>
             </div>
@@ -93,21 +118,18 @@
 
       {{-- Nút điều hướng --}}
       <!-- Prev -->
-      <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+      <button class="carousel-control-prev" type="button" id="prevBtn">
+        <span class="carousel-control-prev-icon"></span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
+      <button class="carousel-control-next" type="button" id="nextBtn">
+        <span class="carousel-control-next-icon"></span>
       </button>
-
-
     </div>
   </div>
 
 
 
   <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ asset('resources/js/home.js') }}"></script>
   @endsection

@@ -29,5 +29,9 @@
         <input type="password" name="password" placeholder="Password">
         <button type="submit">Login</button>
     </form>
+       <p style="margin-top: 15px; text-align: center;">
+        Bạn chưa có tài khoản? 
+        <a href="{{ route('registerform') }}" style="color: #1976d2; font-weight: bold;">Đăng ký ngay</a>
+    </p>
 </div>
 @endsection

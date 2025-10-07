@@ -47,4 +47,11 @@ class UserController extends Controller
      }
      return back()->withErrors(['message'=>'Tài khoản hoặc mật khẩu không đúng!']);
 }
+public function logout(Request $request){
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect('/home')->with('success','Đăng xuất thành công!');
+}
 }   
+ 
