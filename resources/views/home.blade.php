@@ -8,11 +8,26 @@
     <!-- Sidebar category -->
     <div class="col-md-3">
       <div class="category-menu shadow-sm">
-        <div class="category-item"><a href="#"> Điện thoại</a></div>
-        <div class="category-item"><a href="#"> Laptop</a></div>
-        <div class="category-item"><a href="#"> Tai nghe</a></div>
-        <div class="category-item"><a href="#"> Màn hình</a></div>
-        <div class="category-item"><a href="#"> Khuyến mãi</a></div>
+        <div class="category-menu shadow-sm">
+          <div class="category-item">
+            <a href="{{ route('home') }}" class="{{ !isset($categoryName) ? 'active' : '' }}">Tất cả sản phẩm</a>
+          </div>
+          <div class="category-item">
+            <a href="{{ route('category.show', 'dien-thoai') }}" class="{{ isset($categoryName) && $categoryName=='Điện thoại' ? 'active' : '' }}">Điện thoại</a>
+          </div>
+          <div class="category-item">
+            <a href="{{ route('category.show', 'laptop') }}" class="{{ isset($categoryName) && $categoryName=='Laptop' ? 'active' : '' }}">Laptop</a>
+          </div>
+          <div class="category-item">
+            <a href="{{ route('category.show', 'tai-nghe') }}" class="{{ isset($categoryName) && $categoryName=='Tai nghe' ? 'active' : '' }}">Tai nghe</a>
+          </div>
+          <div class="category-item">
+            <a href="{{ route('category.show', 'man-hinh') }}" class="{{ isset($categoryName) && $categoryName=='Màn hình' ? 'active' : '' }}">Màn hình</a>
+          </div>
+          <div class="category-item">
+            <a href="{{ route('category.show', 'khuyen-mai') }}" class="{{ isset($categoryName) && $categoryName=='Khuyến mãi' ? 'active' : '' }}">Khuyến mãi</a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -81,21 +96,21 @@
 
       {{-- Nút điều hướng --}}
       <!-- Prev -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Previous</span>
-</button>
-<button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Next</span>
-</button>
+      <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
 
 
+    </div>
   </div>
-</div>
 
 
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-@endsection
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  @endsection
