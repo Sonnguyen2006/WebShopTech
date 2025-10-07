@@ -9,6 +9,7 @@
     <div class="col-md-3">
       <div class="category-menu shadow-sm">
         <div class="category-menu shadow-sm">
+
           <div class="category-item">
             <a href="{{ route('category.show', 'dien-thoai') }}" class="{{ isset($categoryName) && $categoryName=='Điện thoại' ? 'active' : '' }}">Điện thoại</a>
           </div>
@@ -22,7 +23,7 @@
             <a href="{{ route('category.show', 'man-hinh') }}" class="{{ isset($categoryName) && $categoryName=='Màn hình' ? 'active' : '' }}">Màn hình</a>
           </div>
           <div class="category-item">
-            <a href="{{ route('category.show', 'khuyen-mai') }}" class="{{ isset($categoryName) && $categoryName=='Khuyến mãi' ? 'active' : '' }}">Khuyến mãi</a>
+            <a href="{{ route('promotion') }}" class="{{ isset($categoryName) && $categoryName=='Khuyến mãi' ? 'active' : '' }}">Khuyến mãi</a>
           </div>
         </div>
       </div>
@@ -64,7 +65,19 @@
                 <img src="{{ asset('public/images/' . $product->product_image) }}" class="card-img-top" alt="{{ $product->product_name }}">
                 <div class="card-body d-flex flex-column">
                   <h6 class="card-title">{{ $product->product_name }}</h6>
-                  <p class="fw-bold text-danger">{{ number_format($product->product_price, 0, ',', '.') }}đ</p>
+                  <p>
+                        @if($product->discount > 0)
+                        <span class="badge bg-danger">Khuyến mãi {{ $product->discount }}%</span>
+                        @endif
+                    </p>
+                    <p class="fw-bold">
+                        @if($product->discount > 0)
+                        {{ number_format($product->product_price * (1 - $product->discount/100), 0, ',', '.') }}₫
+                        <span class="text-decoration-line-through text-muted">{{ number_format($product->product_price, 0, ',', '.') }}₫</span>
+                        @else
+                        {{ number_format($product->product_price, 0, ',', '.') }}₫
+                        @endif
+                    </p>  
                 </div>
               </div>
             </div>
@@ -81,7 +94,19 @@
                 <img src="{{ asset('public/images/' . $product->product_image) }}" class="card-img-top" alt="{{ $product->product_name }}">
                 <div class="card-body d-flex flex-column">
                   <h6 class="card-title">{{ $product->product_name }}</h6>
-                  <p class="fw-bold text-danger">{{ number_format($product->product_price, 0, ',', '.') }}đ</p>
+                  <p>
+                        @if($product->discount > 0)
+                        <span class="badge bg-danger">Khuyến mãi {{ $product->discount }}%</span>
+                        @endif
+                    </p>
+                    <p class="fw-bold">
+                        @if($product->discount > 0)
+                        {{ number_format($product->product_price * (1 - $product->discount/100), 0, ',', '.') }}₫
+                        <span class="text-decoration-line-through text-muted">{{ number_format($product->product_price, 0, ',', '.') }}₫</span>
+                        @else
+                        {{ number_format($product->product_price, 0, ',', '.') }}₫
+                        @endif
+                    </p>
                 </div>
               </div>
             </div>
