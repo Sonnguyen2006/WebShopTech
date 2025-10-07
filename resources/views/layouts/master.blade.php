@@ -28,10 +28,11 @@
     <!-- Nội dung navbar -->
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <!-- Form search (ra giữa) -->
-      <form class="d-flex me-4" style="width: 400px;">
-        <input class="form-control me-2" type="search" placeholder="Bạn muốn mua gì hôm nay?">
+     <form action="{{route ('products.search')}}" method="get" class="d-flex me-4" style="width: 400px;">
+        <input class="form-control me-2" type="search" name="keyword" placeholder="Bạn muốn mua gì hôm nay?">
         <button class="btn btn-light" type="submit">Tìm</button>
       </form>
+
 
       <!-- Menu Giỏ hàng & Đăng nhập -->
       <ul class="navbar-nav align-items-center">
@@ -49,7 +50,7 @@
         <!-- Đăng nhập -->
         @guest
           <li class="nav-item">
-            <a href="#" class="nav-link text-white">
+            <a href="{{ route('login') }}" class="nav-link text-white">
               <i class="fa fa-user"></i> Đăng nhập
             </a>
           </li>
@@ -59,12 +60,12 @@
               <i class="fa fa-user-circle"></i> {{ Auth::user()->name }}
             </a>
             <div class="dropdown-menu dropdown-menu-end">
-              <a class="dropdown-item" href="#">Thông tin cá nhân</a>
-              <a class="dropdown-item" href="#"
+              <a class="dropdown-item" href="#" style="color: blue !important;">Thông tin cá nhân</a>
+              <a class="dropdown-item" href="{{ route('logout') }}" style="color: red !important;"
                  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                  Đăng xuất
               </a>
-              <form id="logout-form" action="#" method="POST" class="d-none">
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
               </form>
             </div>
@@ -79,7 +80,7 @@
 </main>
 <footer class="bg-light border-top py-4 mt-auto">
     <div class="container text-center small">
-        &copy; {{ date('Y') }} Cellphones. All rights reserved.
+        &copy; {{ date('Y') }} TechShop. All rights reserved.
         <div>
             <a>Điều khoản</a> · <a >Quyền riêng tư</a>
         </div>
