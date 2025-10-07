@@ -32,12 +32,12 @@ class ProductController extends Controller
         return view('products.category', compact('products', 'categoryName'));
     }
     public function promotion()
-{
-    // Lấy tất cả sản phẩm có discount > 0
-    $products = ProductModel::where('discount', '>', 0)->get();
+    {
+        // Lấy tất cả sản phẩm có discount > 0
+        $products = ProductModel::where('discount', '>', 0)->get();
 
-    // Trả về view promotion.blade.php
-    return view('products.promotion', compact('products'));
-}
+        // Trả về view promotion.blade.php
+        return view('products.promotion', compact('products'));
+    }
 
 }

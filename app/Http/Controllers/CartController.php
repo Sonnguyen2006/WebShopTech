@@ -32,4 +32,17 @@ class CartController extends Controller
 
         return redirect()->back()->with('success', 'Đã thêm vào giỏ hàng!');
     }
+    public function index() {
+        $cart = session()->get('cart', []);
+        return view('cart.index', compact('cart'));
+    }
+    public function update(Request $request){
+        $cart = session()->get('cart', []);
+        if(isset($cart[$request->id])){
+            $cart[$request->id]['quantity'] = $request->quantity;
+            session()->put('cart', $cart);
+        }
+        return redirect()->back();
+    }
+
 }

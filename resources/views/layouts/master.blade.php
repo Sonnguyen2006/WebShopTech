@@ -36,7 +36,7 @@
       <ul class="navbar-nav align-items-center">
         <!-- Giỏ hàng -->
         <li class="nav-item me-3">
-          <a href="#" class="nav-link text-white position-relative">
+          <a href="{{route('cart.index')}}" class="nav-link text-white position-relative">
             <i class="fa fa-shopping-cart fa-lg"></i>
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
               {{ session('cart_count', 0) }}
