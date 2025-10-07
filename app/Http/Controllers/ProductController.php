@@ -39,4 +39,5 @@ class ProductController extends Controller
         // Trả về view promotion.blade.php
         return view('products.promotion', compact('products'));
     }
+
 }
