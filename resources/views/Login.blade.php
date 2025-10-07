@@ -20,20 +20,14 @@
         </div>
     @endif
 
-    <form action="{{ route('register') }}" method="post">
+    <form action="{{ route('login') }}" method="post">
         @csrf
-        <h2>Register</h2>
-        <label>Name</label>
-        <input type="text" name="name" placeholder="Name" value="{{ old('name') }}">
+        <h2>Login</h2>
         <label>Username</label>
         <input type="text" name="username" placeholder="Username" value="{{ old('username') }}">
-        <label>Email</label>
-        <input type="email" name="email" placeholder="Email" value="{{ old('email') }}">
         <label>Password</label>
         <input type="password" name="password" placeholder="Password">
-        <label>Confirm Password</label>
-        <input type="password" name="password_confirmation" placeholder="Confirm Password">
-        <button type="submit">Register</button>
+        <button type="submit">Login</button>
     </form>
 </div>
 @endsection

@@ -59,12 +59,12 @@
               <i class="fa fa-user-circle"></i> {{ Auth::user()->name }}
             </a>
             <div class="dropdown-menu dropdown-menu-end">
-              <a class="dropdown-item" href="{{ route('profile') }}">Thông tin cá nhân</a>
-              <a class="dropdown-item" href="{{ route('logout') }}"
+              <a class="dropdown-item" href="#">Thông tin cá nhân</a>
+              <a class="dropdown-item" href="#"
                  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                  Đăng xuất
               </a>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              <form id="logout-form" action="#" method="POST" class="d-none">
                 @csrf
               </form>
             </div>

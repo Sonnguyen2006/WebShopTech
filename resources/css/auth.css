@@ -1,0 +1,90 @@
+/* Nền phủ toàn màn hình, không phá layout cha */
+body {
+    background: linear-gradient(135deg, #ffffff, #ffffff);
+    font-family: Arial, sans-serif;
+}
+
+/* Giữ cho phần login/register nằm giữa khung nhìn */
+.auth-page {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    gap: 20px; /* Khoảng cách giữa alert và form */
+}
+
+/* Form container */
+.auth-page form {
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    width: 350px;
+    text-align: center;
+}
+
+/* Tiêu đề */
+.auth-page h2 {
+    margin-bottom: 25px;
+    color: #333;
+}
+
+/* Nhóm form */
+.auth-page label {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #444;
+}
+
+.auth-page input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+/* Nút */
+.auth-page button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1976d2;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.auth-page button:hover {
+    background-color: #1565c0;
+}
+
+/* Thông báo */
+.alert {
+    width: 350px;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.alert-success {
+    background-color: #c8e6c9;
+    color: #256029;
+}
+
+.alert-danger {
+    background-color: #ffcdd2;
+    color: #c63737;
+}
+
+.alert ul {
+    margin: 0;
+    padding-left: 20px;
+}
