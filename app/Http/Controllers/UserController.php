@@ -15,7 +15,7 @@ class UserController extends Controller
     public function registerform() {
         return view('register');
     }
-    public function register(Request $request) {
+    public function register($request) {
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
@@ -32,5 +32,14 @@ class UserController extends Controller
          return redirect('/register')->with('success', 'Đăng ký thành công! Chúc mừng bạn!');
 
       
+    }
+    public function loginform(){
+        return view('login');
+    }
+    public function login($request){
+        $request->validate([
+            'username'=>'required|string',
+            'pasword'=>'required|string'
+        ]);
     }
 }
