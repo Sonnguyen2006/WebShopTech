@@ -53,7 +53,7 @@
 </div>
 <div class="container main mt-4">
   <div class="row">
-    <div id="productCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-wrap="false">
+    <div id="productCarousel" class="carousel slide" data-bs-wrap="false">
       <div class="carousel-inner">
 
         {{-- Slide 1 --}}
@@ -66,18 +66,18 @@
                 <div class="card-body d-flex flex-column">
                   <h6 class="card-title">{{ $product->product_name }}</h6>
                   <p>
-                        @if($product->discount > 0)
-                        <span class="badge bg-danger">Khuyến mãi {{ $product->discount }}%</span>
-                        @endif
-                    </p>
-                    <p class="fw-bold">
-                        @if($product->discount > 0)
-                        {{ number_format($product->product_price * (1 - $product->discount/100), 0, ',', '.') }}₫
-                        <span class="text-decoration-line-through text-muted">{{ number_format($product->product_price, 0, ',', '.') }}₫</span>
-                        @else
-                        {{ number_format($product->product_price, 0, ',', '.') }}₫
-                        @endif
-                    </p>  
+                    @if($product->discount > 0)
+                    <span class="badge bg-danger">Khuyến mãi {{ $product->discount }}%</span>
+                    @endif
+                  </p>
+                  <p class="fw-bold">
+                    @if($product->discount > 0)
+                    {{ number_format($product->product_price * (1 - $product->discount/100), 0, ',', '.') }}₫
+                    <span class="text-decoration-line-through text-muted">{{ number_format($product->product_price, 0, ',', '.') }}₫</span>
+                    @else
+                    {{ number_format($product->product_price, 0, ',', '.') }}₫
+                    @endif
+                  </p>
                 </div>
               </div>
             </div>
@@ -95,18 +95,18 @@
                 <div class="card-body d-flex flex-column">
                   <h6 class="card-title">{{ $product->product_name }}</h6>
                   <p>
-                        @if($product->discount > 0)
-                        <span class="badge bg-danger">Khuyến mãi {{ $product->discount }}%</span>
-                        @endif
-                    </p>
-                    <p class="fw-bold">
-                        @if($product->discount > 0)
-                        {{ number_format($product->product_price * (1 - $product->discount/100), 0, ',', '.') }}₫
-                        <span class="text-decoration-line-through text-muted">{{ number_format($product->product_price, 0, ',', '.') }}₫</span>
-                        @else
-                        {{ number_format($product->product_price, 0, ',', '.') }}₫
-                        @endif
-                    </p>
+                    @if($product->discount > 0)
+                    <span class="badge bg-danger">Khuyến mãi {{ $product->discount }}%</span>
+                    @endif
+                  </p>
+                  <p class="fw-bold">
+                    @if($product->discount > 0)
+                    {{ number_format($product->product_price * (1 - $product->discount/100), 0, ',', '.') }}₫
+                    <span class="text-decoration-line-through text-muted">{{ number_format($product->product_price, 0, ',', '.') }}₫</span>
+                    @else
+                    {{ number_format($product->product_price, 0, ',', '.') }}₫
+                    @endif
+                  </p>
                 </div>
               </div>
             </div>
@@ -118,16 +118,12 @@
 
       {{-- Nút điều hướng --}}
       <!-- Prev -->
-      <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+      <button class="carousel-control-prev" type="button" id="prevBtn">
+        <span class="carousel-control-prev-icon"></span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
+      <button class="carousel-control-next" type="button" id="nextBtn">
+        <span class="carousel-control-next-icon"></span>
       </button>
-
-
     </div>
   </div>
 
@@ -135,4 +131,5 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ asset('resources/js/home.js') }}"></script>
   @endsection
