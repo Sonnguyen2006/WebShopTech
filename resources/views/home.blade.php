@@ -10,9 +10,6 @@
       <div class="category-menu shadow-sm">
         <div class="category-menu shadow-sm">
           <div class="category-item">
-            <a href="{{ route('home') }}" class="{{ !isset($categoryName) ? 'active' : '' }}">Tất cả sản phẩm</a>
-          </div>
-          <div class="category-item">
             <a href="{{ route('category.show', 'dien-thoai') }}" class="{{ isset($categoryName) && $categoryName=='Điện thoại' ? 'active' : '' }}">Điện thoại</a>
           </div>
           <div class="category-item">
