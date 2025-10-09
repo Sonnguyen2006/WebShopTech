@@ -43,6 +43,7 @@ class UserController extends Controller
             'password'=>'required|string'
         ]);
        if(Auth::attempt(['username'=>$request->username,'password'=>$request->password])){
+        $request->session()->regenerate();
         return redirect('/home')->with('success','Đăng nhập thành công! Chúc mừng bạn!');
      }
      return back()->withErrors(['message'=>'Tài khoản hoặc mật khẩu không đúng!']);
