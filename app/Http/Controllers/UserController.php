@@ -8,6 +8,7 @@ use App\Models\UserModel;
 use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 
 class UserController extends Controller
@@ -41,5 +42,10 @@ class UserController extends Controller
             'username'=>'required|string',
             'pasword'=>'required|string'
         ]);
-    }
+         if(Auth::attempt(['username'=>$request->username,'password'=>$request->password])){
+        return redirect('/home')->with('success','Đăng nhập thành công! Chúc mừng bạn!');
+     }
+     return back()->withErrors(['message'=>'Tài khoản hoặc mật khẩu không đúng!']);
 }
+    }
+
