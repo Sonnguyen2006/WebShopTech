@@ -70,7 +70,7 @@
                     <span class="badge bg-danger">Khuyến mãi {{ $product->discount }}%</span>
                     @endif
                   </p>
-                  <p class="fw-bold">
+                  <p class="fw-bold text-danger">
                     @if($product->discount > 0)
                     {{ number_format($product->product_price * (1 - $product->discount/100), 0, ',', '.') }}₫
                     <span class="text-decoration-line-through text-muted">{{ number_format($product->product_price, 0, ',', '.') }}₫</span>
@@ -99,7 +99,7 @@
                     <span class="badge bg-danger">Khuyến mãi {{ $product->discount }}%</span>
                     @endif
                   </p>
-                  <p class="fw-bold">
+                  <p class="fw-bold text-danger">
                     @if($product->discount > 0)
                     {{ number_format($product->product_price * (1 - $product->discount/100), 0, ',', '.') }}₫
                     <span class="text-decoration-line-through text-muted">{{ number_format($product->product_price, 0, ',', '.') }}₫</span>
@@ -130,10 +130,6 @@
 
 
   <!-- Bootstrap JS -->
-<<<<<<< HEAD
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-=======
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
->>>>>>> 1bd963d4b8f8abfb7890a613493af15c7df208e6
   <script src="{{ asset('resources/js/home.js') }}"></script>
   @endsection

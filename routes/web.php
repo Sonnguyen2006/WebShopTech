@@ -23,3 +23,4 @@ Route::post('/cart/add/{product_id}', [CartController::class, 'add'])->name('car
 Route::get('/category/{slug}', [ProductController::class, 'category'])->name('category.show');
 Route::get('/promotion', [ProductController::class, 'promotion'])->name('promotion');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');

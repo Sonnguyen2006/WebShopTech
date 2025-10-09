@@ -32,8 +32,4 @@
     @endforeach
   </div>
 </div>
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 1bd963d4b8f8abfb7890a613493af15c7df208e6
