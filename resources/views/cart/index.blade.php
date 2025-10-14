@@ -34,9 +34,11 @@
                 </td>
             </tr>
             @endforeach
+            
         </tbody>
     </table>
-    <h4>Tổng cộng: {{ number_format($total) }}₫</h4>
+    <div class="bill"> <h4>Tổng cộng: {{ number_format($total) }}₫</h4>
+    <form action=""><button type="submit" class="btn-success">Thanh Toán</button></form></div>
     @else
     <p>Giỏ hàng đang trống.</p>
     @endif
