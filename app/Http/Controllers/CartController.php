@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OrderDetail;
+use App\Models\OrderModel;
 use App\Models\ProductModel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CartController extends Controller
 {
@@ -36,6 +40,52 @@ class CartController extends Controller
         $cart = session()->get('cart', []);
         return view('cart.index', compact('cart'));
     }
+    public function checkout(Request $request)
+    {
+        $cart = session()->get('cart', []);
+        if (empty($cart)) {
+            return redirect()->back()->with('error', 'Giỏ hàng trống!');
+        }
+
+        // Tạo mã đơn hàng
+        $order_id = 'ORD' . strtoupper(Str::random(6));
+
+        // Tính tổng tiền
+        $total_amount = 0;
+        foreach ($cart as $item) {
+            $total_amount += $item['product_price'] * $item['quantity'];
+        }
+
+        // Tạo Order
+        $order = OrderModel::create([
+            'order_id'       => $order_id,
+            'username'       => Auth::users()->name,
+            'email'          => Auth::users()->email,
+            'address'        => $request->address ?? '',
+            'total_amount'   => $total_amount,
+            'status'         => 'pending',
+            'payment_method' => $request->payment_method ?? 'COD',
+        ]);
+
+        // Tạo OrderDetail cho từng sản phẩm
+        foreach ($cart as $product_id => $item) {
+            OrderDetail::create([
+                'order_id'   => $order_id,
+                'product_id' => $product_id,
+                'quantity'   => $item['quantity'],
+                'price'      => $item['product_price'],
+            ]);
+        }
+
+        // Xóa giỏ hàng
+        session()->forget('cart');
+        session(['cart_count' => 0]);
+
+        return redirect()->route('orders.index')->with('success', 'Đặt hàng thành công!');
+    }    
+
+
+
 
     public function remove(Request $request){
         $cart = session()->get('cart', []);
