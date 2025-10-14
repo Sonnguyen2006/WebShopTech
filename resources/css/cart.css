@@ -1,0 +1,15 @@
+.btn-remove {
+    background-color: red;      /* nền đỏ */
+    color: white;               /* chữ trắng */
+    border: 2px solid red;      /* viền đỏ */
+    border-radius: 8px;         /* bo góc */
+    padding: 5px 15px;          /* khoảng cách chữ và viền */
+    cursor: pointer;            /* con trỏ tay khi hover */
+    transition: all 0.3s ease;  /* mượt khi hover */
+}
+
+.btn-remove:hover {
+    background-color: white;    /* nền trắng khi hover */
+    color: red;                 /* chữ đỏ khi hover */
+    border: 2px solid red;      /* viền vẫn đỏ */
+}

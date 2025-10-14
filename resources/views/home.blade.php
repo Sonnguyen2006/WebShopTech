@@ -62,7 +62,7 @@
             @foreach($products->slice(0, 8) as $product) {{-- 8 sản phẩm = 2 hàng (mỗi hàng 4) --}}
             <div class="col">
               <div class="card h-100" onclick="window.location.href='{{ url('/product/' . $product->product_id) }}'" style="cursor:pointer;">
-<img src="{{ asset('public/images/' . $product->product_image) }}" class="card-img-top" alt="{{ $product->product_name }}">
+                <img src="{{ asset('public/images/' . $product->product_image) }}" class="card-img-top" alt="{{ $product->product_name }}">
                 <div class="card-body d-flex flex-column">
                   <h6 class="card-title">{{ $product->product_name }}</h6>
                   <p>
@@ -70,7 +70,7 @@
                     <span class="badge bg-danger">Khuyến mãi {{ $product->discount }}%</span>
                     @endif
                   </p>
-                  <p class="fw-bold">
+                  <p class="fw-bold text-danger">
                     @if($product->discount > 0)
                     {{ number_format($product->product_price * (1 - $product->discount/100), 0, ',', '.') }}₫
                     <span class="text-decoration-line-through text-muted">{{ number_format($product->product_price, 0, ',', '.') }}₫</span>
@@ -99,7 +99,7 @@
                     <span class="badge bg-danger">Khuyến mãi {{ $product->discount }}%</span>
                     @endif
                   </p>
-                  <p class="fw-bold">
+                  <p class="fw-bold text-danger">
                     @if($product->discount > 0)
                     {{ number_format($product->product_price * (1 - $product->discount/100), 0, ',', '.') }}₫
                     <span class="text-decoration-line-through text-muted">{{ number_format($product->product_price, 0, ',', '.') }}₫</span>
@@ -130,10 +130,6 @@
 
 
   <!-- Bootstrap JS -->
-<<<<<<< HEAD
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-=======
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
->>>>>>> 1bd963d4b8f8abfb7890a613493af15c7df208e6
   <script src="{{ asset('resources/js/home.js') }}"></script>
   @endsection
