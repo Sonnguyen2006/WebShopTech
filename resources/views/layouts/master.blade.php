@@ -7,6 +7,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('resources/css/master.css') }}">
+    <link rel="stylesheet" href="{{ asset('resources/css/home.css') }}">
     @yield('styles')
 </head>
 
@@ -86,3 +87,5 @@
         </div>
     </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ asset('resources/js/home.js') }}"></script>

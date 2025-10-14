@@ -7,6 +7,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo e(asset('resources/css/master.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('resources/css/home.css')); ?>">
     <?php echo $__env->yieldContent('styles'); ?>
 </head>
 
@@ -87,4 +88,6 @@
             <a>Điều khoản</a> · <a >Quyền riêng tư</a>
         </div>
     </div>
-</footer><?php /**PATH D:\xampp\htdocs\WebShopTech\resources\views/layouts/master.blade.php ENDPATH**/ ?>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo e(asset('resources/js/home.js')); ?>"></script><?php /**PATH D:\xampp\htdocs\WebShopTech\resources\views/layouts/master.blade.php ENDPATH**/ ?>
