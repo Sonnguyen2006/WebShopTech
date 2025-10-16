@@ -10,9 +10,10 @@ class OrderController extends Controller
 {
     public function index(){
         $userId = Auth::id();
-        $order = OrderModel::where('user_id', $userId)
-            ->OrderBy('create_at', 'desc')
+        $orders = OrderModel::where('user_id', $userId)
+            ->OrderBy('created_at', 'desc')
             ->get();
         return view('orders.index', compact('orders'));
     }
+
 }
