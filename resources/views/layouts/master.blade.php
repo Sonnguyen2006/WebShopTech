@@ -62,6 +62,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-end">
               <a class="dropdown-item" href="#" style="color: blue !important;">Thông tin cá nhân</a>
+              <a class="dropdown-item" href="{{route('order.index' , ['username' => Auth::user()->name])}}" style="color: blue !important;">Lịch sử mua hàng</a>
               <a class="dropdown-item" href="{{ route('logout') }}" style="color: red !important;"
                  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                  Đăng xuất
