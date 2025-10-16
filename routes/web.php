@@ -6,6 +6,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
+use App\Models\OrderModel;
 use Illuminate\Support\Facades\Auth;
     
 Route::get('/', function () {
@@ -31,3 +33,5 @@ Route::get('/category/{slug}', [ProductController::class, 'category'])->name('ca
 Route::get('/promotion', [ProductController::class, 'promotion'])->name('promotion');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+Route::get('/order/{username}', [OrderController::class, 'index'])->name('order.index');
