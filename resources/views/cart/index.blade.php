@@ -50,7 +50,7 @@
         <h4>Thanh Toán</h4>
         <p><strong>Tổng tiền: </strong>{{ number_format($total) }}₫</p>
 
-        <form action="" method="POST">
+        <form action="{{route('cart.checkout')}}" method="POST">
             @csrf
             <div class="mb-3">
                 <label>Địa chỉ nhận hàng:</label>

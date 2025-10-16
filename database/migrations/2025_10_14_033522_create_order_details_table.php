@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('order_details', function (Blueprint $table) {
         $table->id('order_detail_id');//khóa chính của order_detail
         $table->string('order_id'); // trùng với order_id trong bảng orders
-        $table->unsignedBigInteger('product_id');
+        $table->string('product_id');
         $table->integer('quantity');
         $table->decimal('price', 10, 2);
         $table->timestamps();
 
-        $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+        $table->foreign('product_id')->references('product_id')->on('products')->onDelete('cascade');
     });
     }
 
