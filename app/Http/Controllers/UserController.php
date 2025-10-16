@@ -23,12 +23,14 @@ class UserController extends Controller
             'username' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
+            'role'=>'nullable|string|in:user,admin'
         ]);
         UserModel::create([
             'name'=>$request->name,
             'username'=>$request->username,
             'email'=>$request->email,
             'password'=>Hash::make($request->password),
+            'role'=>$request->role??'user'
         ]);
          return redirect('/home')->with('success', 'Đăng ký thành công! Chúc mừng bạn!');
 
@@ -43,6 +45,9 @@ class UserController extends Controller
             'password'=>'required|string'
         ]);
        if(Auth::attempt(['username'=>$request->username,'password'=>$request->password])){
+        if(Auth::user()->role==='admin'){
+            return redirect('/admin')->with('success','Đăng nhập thành công! Chúc mừng bạn!');
+        }
         return redirect('/home')->with('success','Đăng nhập thành công! Chúc mừng bạn!');
      }
      return back()->withErrors(['message'=>'Tài khoản hoặc mật khẩu không đúng!']);

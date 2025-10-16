@@ -1,5 +1,6 @@
 <?php
 
+use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -10,8 +11,12 @@ use App\Http\Controllers\CartController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', [HomeController::class, 'home'])->name('home');
-Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
+Route::get('/home', [HomeController::class, 'home'])
+    ->name('home')
+    ->middleware(['auth',""]);
+Route::get('/admin', [AdminController::class, 'admin'])
+    ->name('admin')
+    ->middleware(['auth',]);
 Route::get('/register', [UserController::class, 'registerform'])->name('registerform');
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::get('/login',[UserController::class,'loginform'])->name('loginform');
