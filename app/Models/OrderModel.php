@@ -8,7 +8,7 @@ class OrderModel extends Model
 {
     protected $table = 'orders';
     protected $fillable = [
-        'order_id', 'username', 'email', 'address', 
+        'order_id','user_id', 'username', 'email', 'address', 
         'total_amount', 'status', 'payment_method'
     ];
 
