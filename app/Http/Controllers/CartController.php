@@ -42,6 +42,7 @@ class CartController extends Controller
     }
     public function checkout(Request $request)
     {
+        $user = Auth::user();
         $cart = session()->get('cart', []);
         if (empty($cart)) {
             return redirect()->back()->with('error', 'Giỏ hàng trống!');
@@ -59,8 +60,9 @@ class CartController extends Controller
         // Tạo Order
         $order = OrderModel::create([
             'order_id'       => $order_id,
-            'username'       => Auth::users()->name,
-            'email'          => Auth::users()->email,
+            'user_id'        => $user->user_id,
+            'username'       => Auth::user()->name,
+            'email'          => Auth::user()->email,
             'address'        => $request->address ?? '',
             'total_amount'   => $total_amount,
             'status'         => 'pending',
@@ -81,7 +83,7 @@ class CartController extends Controller
         session()->forget('cart');
         session(['cart_count' => 0]);
 
-        return redirect()->route('orders.index')->with('success', 'Đặt hàng thành công!');
+        return redirect()->route('order.index', ['username' => Auth::user()->name])->with('success', 'Đặt hàng thành công!');
     }    
 
 
