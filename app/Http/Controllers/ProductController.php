@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function show($product_id ){
+        //lấy từ DB sản phẩm có id giống trên name
         $product = ProductModel::where('product_id', $product_id )->FirstOrFail();
         return view ('products.show',compact('product'));
     }
@@ -22,13 +23,14 @@ class ProductController extends Controller
         ];
 
         $categoryName = $categoryMap[$slug] ?? null;
-
+        //nếu không có categoryName nào thì trả về rổng
         if (!$categoryName) {
             abort(404, 'Danh mục không tồn tại');
         }
 
         // Lọc sản phẩm theo danh mục
          $products = ProductModel::where('category', $categoryName)->get();
+         //lọc theo categoryName
         return view('products.category', compact('products', 'categoryName'));
     }
     public function promotion()
@@ -39,5 +41,4 @@ class ProductController extends Controller
         // Trả về view promotion.blade.php
         return view('products.promotion', compact('products'));
     }
-
 }
