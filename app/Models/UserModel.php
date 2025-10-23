@@ -14,7 +14,7 @@ class UserModel extends Authenticatable
   use Notifiable;
      protected $table = 'users';
      protected $primaryKey = "user_id";
-       protected $fillable = ['name', 'username', 'email', 'password'];
+       protected $fillable = ['name', 'username', 'email', 'password', 'role'];
        protected $hidden = [
         'password',
       ];

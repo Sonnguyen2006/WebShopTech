@@ -33,14 +33,9 @@
 </button>
 
         {{-- Logo hoặc tên --}}
-        <a class="navbar-brand fw-bold text-primary" stylehref="#" style="padding-right: 1110px;">Modernize Admin</a>
+        <a class="navbar-brand fw-bold text-primary" stylehref="#" style="padding-right: 2500px;">Modernize Admin</a>
 
-        {{-- Khu vực phải (login + avatar) --}}
-        <div class="d-flex align-items-center gap-3">
-          <a href="/login" class="btn btn-primary btn-sm">Login</a>
-          <img src="{{ asset('images/profile/user-1.jpg') }}" alt="User" class="rounded-circle" width="35" height="35">
-        </div>
-      </div>
+       
     </header>
 
     {{-- Nội dung trang con --}}

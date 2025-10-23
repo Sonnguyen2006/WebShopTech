@@ -1,19 +1,25 @@
 <?php
 
+use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\UserMiddleware;
 use Illuminate\Support\Facades\Auth;
     
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
+
+Route::get('/admin', [AdminController::class, 'admin'])
+    ->name('admin')
+    ->middleware([AdminMiddleware::class]);
 Route::get('/register', [UserController::class, 'registerform'])->name('registerform');
 Route::post('/register', [UserController::class, 'register'])->name('register');
 // Route::get('/login',[UserController::class,'loginform'])->name('loginform');
@@ -32,9 +38,11 @@ Route::get('/category/{slug}', [ProductController::class, 'category'])->name('ca
 Route::get('/promotion', [ProductController::class, 'promotion'])->name('promotion');
 //show ra các sản phẩn đã cho vào giỏ hàng
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-// xóa đơn hàng đã lựa chọn
-Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
-//hoàn tất quá trình checkout
-Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
-//hiển thị trang order theo tên người dùng
-Route::get('/order/{username}', [OrderController::class, 'index'])->name('order.index');
+Route::middleware([UserMiddleware::class])->group(function(){
+    // xóa đơn hàng đã lựa chọn
+    Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+    //hoàn tất quá trình checkout
+    Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+    //hiển thị trang order theo tên người dùng
+    Route::get('/order/{username}', [OrderController::class, 'index'])->name('order.index');
+});
