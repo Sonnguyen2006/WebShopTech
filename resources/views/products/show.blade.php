@@ -32,7 +32,7 @@
 
       <!-- Mô tả -->
       <div class="mt-3">
-        <h5 class="fw-semibold mb-2">Mô tả sản phẩm</h5>
+        <h5 class="fw-semibold mb-2">Mô tả sản phẩm</h5>  
         <p class="text-secondary" style="white-space: pre-line;">{{ $product->description }}</p>
       </div>
       <form action="{{ route('cart.add', $product->product_id) }}" method="POST" class="mt-4">
