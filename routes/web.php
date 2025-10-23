@@ -15,20 +15,11 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
-<<<<<<< HEAD
 
 
 Route::get('/admin', [AdminController::class, 'admin'])
     ->name('admin')
     ->middleware([AdminMiddleware::class]);
-=======
-Route::get('/home', [HomeController::class, 'home'])
-    ->name('home')
-    ->middleware(['auth',""]);
-Route::get('/admin', [AdminController::class, 'admin'])
-    ->name('admin')
-    ->middleware(['auth',]);
->>>>>>> 80f5bacea99506ef09a5d95a56063f77dfd64dee
 Route::get('/register', [UserController::class, 'registerform'])->name('registerform');
 Route::post('/register', [UserController::class, 'register'])->name('register');
 // Route::get('/login',[UserController::class,'loginform'])->name('loginform');
