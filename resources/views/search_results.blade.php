@@ -12,7 +12,7 @@
                     <img src="{{ asset('public/images/' . $product->product_image) }}" class="card-img-top" alt="{{ $product->product_name }}">
                     <div class="card-body">
                         <h6 class="card-title">{{ $product->product_name }}</h6>
-                        <p class="fw-bold text-danger">{{ number_format($product->product_price, 0, ',', '.') }}đ</p>
+                        <p class="fw-bold text-danger">{{ number_format($product->product_cost, 0, ',', '.') }}đ</p>
                     </div>
                 </div>
             </div>

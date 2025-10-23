@@ -31,7 +31,7 @@
     <path d="M4 16l16 0"></path>
   </svg>
 </button>
-
+@include('layouts.admin.sidebar')
         {{-- Logo hoặc tên --}}
         <a class="navbar-brand fw-bold text-primary" stylehref="#" style="padding-right: 2500px;">Modernize Admin</a>
 

@@ -26,7 +26,7 @@
       <div class="border border-primary rounded p-3 my-3" 
            style="background-color: #e7f3ff; display: inline-block;">
         <span class="fw-bold text-primary" style="font-size: 1.4rem;">
-          {{ number_format($product->product_price, 0, ',', '.') }}đ
+          {{ number_format($product->product_cost, 0, ',', '.') }}đ
         </span>
       </div>
 
