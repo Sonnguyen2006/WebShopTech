@@ -64,17 +64,14 @@
                 <img src="<?php echo e(asset('public/images/' . $product->product_image)); ?>" class="card-img-top" alt="<?php echo e($product->product_name); ?>">
                 <div class="card-body d-flex flex-column">
                   <h6 class="card-title"><?php echo e($product->product_name); ?></h6>
-                  <p>
-                    <?php if($product->discount > 0): ?>
-                    <span class="badge bg-danger">Khuyến mãi <?php echo e($product->discount); ?>%</span>
-                    <?php endif; ?>
-                  </p>
                   <p class="fw-bold text-danger">
                     <?php if($product->discount > 0): ?>
-                    <?php echo e(number_format($product->product_price * (1 - $product->discount/100), 0, ',', '.')); ?>₫
-                    <span class="text-decoration-line-through text-muted"><?php echo e(number_format($product->product_price, 0, ',', '.')); ?>₫</span>
+                    <?php echo e(number_format($product->final_price, 0, ',', '.')); ?>₫
+                    <span class="text-decoration-line-through text-muted ms-2">
+                      <?php echo e(number_format($product->product_cost, 0, ',', '.')); ?>₫
+                    </span>
                     <?php else: ?>
-                    <?php echo e(number_format($product->product_price, 0, ',', '.')); ?>₫
+                    <?php echo e(number_format($product->product_cost, 0, ',', '.')); ?>₫
                     <?php endif; ?>
                   </p>
                 </div>
@@ -93,17 +90,14 @@
                 <img src="<?php echo e(asset('public/images/' . $product->product_image)); ?>" class="card-img-top" alt="<?php echo e($product->product_name); ?>">
                 <div class="card-body d-flex flex-column">
                   <h6 class="card-title"><?php echo e($product->product_name); ?></h6>
-                  <p>
-                    <?php if($product->discount > 0): ?>
-                    <span class="badge bg-danger">Khuyến mãi <?php echo e($product->discount); ?>%</span>
-                    <?php endif; ?>
-                  </p>
                   <p class="fw-bold text-danger">
                     <?php if($product->discount > 0): ?>
-                    <?php echo e(number_format($product->product_price * (1 - $product->discount/100), 0, ',', '.')); ?>₫
-                    <span class="text-decoration-line-through text-muted"><?php echo e(number_format($product->product_price, 0, ',', '.')); ?>₫</span>
+                    <?php echo e(number_format($product->final_price, 0, ',', '.')); ?>₫
+                    <span class="text-decoration-line-through text-muted ms-2">
+                      <?php echo e(number_format($product->product_cost, 0, ',', '.')); ?>₫
+                    </span>
                     <?php else: ?>
-                    <?php echo e(number_format($product->product_price, 0, ',', '.')); ?>₫
+                    <?php echo e(number_format($product->product_cost, 0, ',', '.')); ?>₫
                     <?php endif; ?>
                   </p>
                 </div>

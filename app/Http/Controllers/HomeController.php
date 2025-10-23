@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         // Lấy tất cả sản phẩm
         $products = ProductModel::all();
-
+        
         // Truyền ra view
         return view('home', compact('products'));
     }

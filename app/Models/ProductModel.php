@@ -15,8 +15,16 @@ class ProductModel extends Model
         'product_id',
         'product_name',
         'product_image',
-        'product_price',
         'product_cost',
+        'discount',
         'description',
     ];
+    public function getFinalPriceAttribute()
+{
+    if ($this->discount > 0) {
+        return $this->product_cost * (1 - $this->discount / 100);
+    }
+
+    return $this->product_cost;
+}
 }

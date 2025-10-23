@@ -1,0 +1,107 @@
+[33m8503354[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32madmin[m[33m)[m HEAD@{0}: commit: add libery
+[33m43a059e[m[33m ([m[1;31morigin/admin[m[33m)[m HEAD@{1}: checkout: moving from dev to admin
+[33md1cf81e[m[33m ([m[1;31morigin/order[m[33m, [m[1;32morder[m[33m, [m[1;32mdev[m[33m)[m HEAD@{2}: checkout: moving from admin to dev
+[33m43a059e[m[33m ([m[1;31morigin/admin[m[33m)[m HEAD@{3}: checkout: moving from dev to admin
+[33md1cf81e[m[33m ([m[1;31morigin/order[m[33m, [m[1;32morder[m[33m, [m[1;32mdev[m[33m)[m HEAD@{4}: checkout: moving from layout/home to dev
+[33m5df1b8a[m[33m ([m[1;31morigin/layout/home[m[33m, [m[1;32mlayout/home[m[33m)[m HEAD@{5}: checkout: moving from order to layout/home
+[33md1cf81e[m[33m ([m[1;31morigin/order[m[33m, [m[1;32morder[m[33m, [m[1;32mdev[m[33m)[m HEAD@{6}: checkout: moving from layout/home to order
+[33m5df1b8a[m[33m ([m[1;31morigin/layout/home[m[33m, [m[1;32mlayout/home[m[33m)[m HEAD@{7}: checkout: moving from permission to layout/home
+[33mc75ee5a[m[33m ([m[1;31morigin/permission[m[33m, [m[1;32mpermission[m[33m)[m HEAD@{8}: commit: fix merge comflict
+[33m798ea05[m HEAD@{9}: commit (merge): resolve conflicts
+[33m88d52de[m HEAD@{10}: commit: ortherwisth
+[33m1b5f5a8[m HEAD@{11}: commit: use middleware to permiss
+[33m98df183[m HEAD@{12}: commit: usermiddleware permission for guest and user
+[33m5663bdc[m HEAD@{13}: commit: add Adminmiddleware
+[33md1cf81e[m[33m ([m[1;31morigin/order[m[33m, [m[1;32morder[m[33m, [m[1;32mdev[m[33m)[m HEAD@{14}: reset: moving to HEAD~1
+[33m020c9c3[m HEAD@{15}: reset: moving to HEAD
+[33m020c9c3[m HEAD@{16}: commit: add Adminmiddleware
+[33md1cf81e[m[33m ([m[1;31morigin/order[m[33m, [m[1;32morder[m[33m, [m[1;32mdev[m[33m)[m HEAD@{17}: checkout: moving from order to permission
+[33md1cf81e[m[33m ([m[1;31morigin/order[m[33m, [m[1;32morder[m[33m, [m[1;32mdev[m[33m)[m HEAD@{18}: checkout: moving from permission to order
+[33m5de384f[m HEAD@{19}: commit (merge): revolve merge
+[33ma953ee0[m HEAD@{20}: checkout: moving from dev to permission
+[33md1cf81e[m[33m ([m[1;31morigin/order[m[33m, [m[1;32morder[m[33m, [m[1;32mdev[m[33m)[m HEAD@{21}: pull origin dev: Fast-forward
+[33m897df53[m HEAD@{22}: checkout: moving from order to dev
+[33md1cf81e[m[33m ([m[1;31morigin/order[m[33m, [m[1;32morder[m[33m, [m[1;32mdev[m[33m)[m HEAD@{23}: commit: add comment to order branch
+[33mb348717[m HEAD@{24}: checkout: moving from permission to order
+[33ma953ee0[m HEAD@{25}: commit: sda
+[33mf2513f0[m HEAD@{26}: checkout: moving from order to permission
+[33mb348717[m HEAD@{27}: checkout: moving from permission to order
+[33mf2513f0[m HEAD@{28}: commit: sa
+[33me6ef3dc[m HEAD@{29}: commit (merge): Merge branch 'permission' of https://github.com/Sonnguyen2006/WebShopTech into permission
+[33m8d1e2c6[m HEAD@{30}: checkout: moving from order to permission
+[33mb348717[m HEAD@{31}: commit: add order and cart history for dev branch
+[33m8d1e2c6[m HEAD@{32}: checkout: moving from permission to order
+[33m8d1e2c6[m HEAD@{33}: checkout: moving from order to permission
+[33m8d1e2c6[m HEAD@{34}: commit: unified migration to DB
+[33m247a0ad[m HEAD@{35}: commit: fix unified model order
+[33md7abda5[m HEAD@{36}: commit: add function show
+[33m9263aca[m HEAD@{37}: commit: fix create order
+[33m0b30577[m HEAD@{38}: commit: add route checkout and order of user
+[33m6ff862f[m HEAD@{39}: commit: fix cart.index
+[33m221dbb7[m HEAD@{40}: commit: add ordercontroller
+[33m56f4be5[m HEAD@{41}: commit: improve cart.index
+[33m857a192[m HEAD@{42}: commit: fix master
+[33m7faa4b8[m HEAD@{43}: commit: fix cart.index
+[33mbcd55d8[m HEAD@{44}: commit: add order and order_detail model
+[33m0a2c76a[m HEAD@{45}: commit: add migration order_detail
+[33m897df53[m HEAD@{46}: pull origin dev: Fast-forward
+[33m08ccbc5[m[33m ([m[1;31morigin/login[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{47}: checkout: moving from dev to order
+[33m897df53[m HEAD@{48}: commit (merge): Resolve .env merge conflict
+[33m173f572[m HEAD@{49}: pull origin dev: Fast-forward
+[33m4ca88ad[m HEAD@{50}: checkout: moving from login to dev
+[33m08ccbc5[m[33m ([m[1;31morigin/login[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{51}: rebase (abort): returning to refs/heads/login
+[33m08ccbc5[m[33m ([m[1;31morigin/login[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{52}: rebase (abort): returning to refs/heads/login
+[33mb42dbaf[m HEAD@{53}: rebase (continue): fix login
+[33mb5c2220[m HEAD@{54}: pull origin dev: updating HEAD
+[33mb5c2220[m HEAD@{55}: commit: fix login to
+[33m08ccbc5[m[33m ([m[1;31morigin/login[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{56}: checkout: moving from c7b203c43868518c2ae8127ec3a4e375e9cf7905 to login
+[33mc7b203c[m HEAD@{57}: pull origin dev --rebase (pick): change user_id
+[33m15ef997[m HEAD@{58}: pull origin dev --rebase (pick): add migration for orders
+[33m173f572[m HEAD@{59}: pull origin dev --rebase (start): checkout 173f572ab9230e4e28509771f5780c691ab22351
+[33m08ccbc5[m[33m ([m[1;31morigin/login[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{60}: pull origin dev: updating HEAD
+[33m08ccbc5[m[33m ([m[1;31morigin/login[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{61}: checkout: moving from order to login
+[33m08ccbc5[m[33m ([m[1;31morigin/login[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{62}: checkout: moving from login to order
+[33m08ccbc5[m[33m ([m[1;31morigin/login[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{63}: checkout: moving from order to login
+[33m08ccbc5[m[33m ([m[1;31morigin/login[m[33m, [m[1;32mlogin[m[33m)[m HEAD@{64}: commit (merge): fix login to
+[33m262bd3e[m HEAD@{65}: commit (merge): fix master
+[33m74bffda[m HEAD@{66}: commit: change user_id
+[33m9068b9c[m HEAD@{67}: commit: add migration for orders
+[33mabb68a4[m[33m ([m[1;32mproduct[m[33m)[m HEAD@{68}: checkout: moving from product to order
+[33mabb68a4[m[33m ([m[1;32mproduct[m[33m)[m HEAD@{69}: pull origin dev: Fast-forward
+[33m1bd963d[m[33m ([m[1;31morigin/product[m[33m)[m HEAD@{70}: commit: add index of cart
+[33mdde38f6[m HEAD@{71}: commit: add roll sline animation
+[33mf6895b3[m HEAD@{72}: checkout: moving from layout/home to product
+[33m5df1b8a[m[33m ([m[1;31morigin/layout/home[m[33m, [m[1;32mlayout/home[m[33m)[m HEAD@{73}: checkout: moving from product to layout/home
+[33mf6895b3[m HEAD@{74}: commit: create view category and promotion
+[33mcd18dd3[m HEAD@{75}: commit: add controller show category and promotion
+[33m0c51793[m HEAD@{76}: commit: fix seeder and improve product at home
+[33m4ca88ad[m HEAD@{77}: commit: fix database
+[33m62fd6c3[m HEAD@{78}: commit: fix menu
+[33m3225177[m HEAD@{79}: commit: add link to category
+[33mf352efd[m HEAD@{80}: commit: add route to category
+[33ma9b5777[m HEAD@{81}: checkout: moving from layout/home to product
+[33m5df1b8a[m[33m ([m[1;31morigin/layout/home[m[33m, [m[1;32mlayout/home[m[33m)[m HEAD@{82}: commit: impive style home
+[33m80e7305[m HEAD@{83}: commit: fix home with js
+[33m8bfc6b5[m HEAD@{84}: checkout: moving from product to layout/home
+[33ma9b5777[m HEAD@{85}: commit: improve more info to view show product
+[33m462d468[m HEAD@{86}: commit: improve view show product
+[33m20313e5[m HEAD@{87}: commit: add route of add to cart
+[33m15e86c3[m HEAD@{88}: commit: add function add cart of product
+[33mdbb4f86[m HEAD@{89}: commit: fix master loyout, view of show also productController
+[33md5a081b[m HEAD@{90}: commit: add view of show product
+[33m57fce60[m HEAD@{91}: commit: add show product in productcontroller
+[33m8bfc6b5[m HEAD@{92}: checkout: moving from layout/home to product
+[33m8bfc6b5[m HEAD@{93}: commit: add route show info of product
+[33mcfe897e[m HEAD@{94}: commit: fix search in master and add new seeder
+[33m75e5c88[m HEAD@{95}: commit: first form of layout/home
+[33m1a0eef2[m HEAD@{96}: commit: add seeder of product
+[33mdec685c[m HEAD@{97}: commit: add model of product
+[33m8977834[m HEAD@{98}: commit: add migration of product
+[33m4f9a88c[m[33m ([m[1;32mmasterlayout[m[33m)[m HEAD@{99}: checkout: moving from main to layout/home
+[33m19ab265[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{100}: reset: moving to HEAD
+[33m19ab265[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m HEAD@{101}: pull: Fast-forward
+[33m4f9a88c[m[33m ([m[1;32mmasterlayout[m[33m)[m HEAD@{102}: checkout: moving from masterlayout to main
+[33m4f9a88c[m[33m ([m[1;32mmasterlayout[m[33m)[m HEAD@{103}: checkout: moving from layout/home to masterlayout
+[33m4f9a88c[m[33m ([m[1;32mmasterlayout[m[33m)[m HEAD@{104}: checkout: moving from main to layout/home
+[33m4f9a88c[m[33m ([m[1;32mmasterlayout[m[33m)[m HEAD@{105}: commit: Add vendor folder
+[33mec4252c[m HEAD@{106}: clone: from https://github.com/Sonnguyen2006/WebShopTech

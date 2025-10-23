@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('product_name');
             $table->string('product_image')->nullable(false);
             $table->decimal('product_cost', 15, 2)->nullable(false);  // giá gốc
-            $table->decimal('product_price', 15, 2);             // giá bán
+            $table->decimal('discount',5,2);	
             $table->text('description')->nullable(false);             // mô tả sản phẩm
             $table->text('category')->nullable(false);
             $table->tinyInteger('rating')->nullable(false);
