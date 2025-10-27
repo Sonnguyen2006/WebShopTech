@@ -67,15 +67,10 @@
                   <h6 class="card-title">{{ $product->product_name }}</h6>
                   <p class="fw-bold text-danger">
                     @if($product->discount > 0)
-<<<<<<< HEAD
-                    {{ number_format($product->product_cost * (1 - $product->discount/100), 0, ',', '.') }}₫
-                    <span class="text-decoration-line-through text-muted">{{ number_format($product->product_cost, 0, ',', '.') }}₫</span>
-=======
                     {{ number_format($product->final_price, 0, ',', '.') }}₫
                     <span class="text-decoration-line-through text-muted ms-2">
                       {{ number_format($product->product_cost, 0, ',', '.') }}₫
                     </span>
->>>>>>> 620ae047b25809f37a2e6e7068f16b5661164b90
                     @else
                     {{ number_format($product->product_cost, 0, ',', '.') }}₫
                     @endif
