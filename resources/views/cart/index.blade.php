@@ -24,7 +24,7 @@
                 <td><img src="{{ asset('public/images/' . $product['product_image']) }}" width="60"></td>
                 <td>{{ number_format($product['product_price']) }}₫</td>
                 <td> {{number_format($product['quantity'])}}</td>
-                <td>{{ number_format($product['product_price'] * $product['quantity']) }}₫</td>
+                <td>{{ number_format($product['product_price'] * $product['quantity'], 0, ',', '.') }}₫</td>
                 <td>
                     <form action="{{ route('cart.remove') }}" method="POST" style="display:inline-block;">
                         @csrf

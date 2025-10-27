@@ -25,13 +25,13 @@
       <div class="border border-primary rounded p-3 my-3" 
            style="background-color: #e7f3ff; display: inline-block;">
         <span class="fw-bold text-primary" style="font-size: 1.4rem;">
-          <?php echo e(number_format($product->product_price, 0, ',', '.')); ?>đ
+          <?php echo e(number_format($product->final_price, 0, ',', '.')); ?>đ
         </span>
       </div>
 
       <!-- Mô tả -->
       <div class="mt-3">
-        <h5 class="fw-semibold mb-2">Mô tả sản phẩm</h5>
+        <h5 class="fw-semibold mb-2">Mô tả sản phẩm</h5>  
         <p class="text-secondary" style="white-space: pre-line;"><?php echo e($product->description); ?></p>
       </div>
       <form action="<?php echo e(route('cart.add', $product->product_id)); ?>" method="POST" class="mt-4">

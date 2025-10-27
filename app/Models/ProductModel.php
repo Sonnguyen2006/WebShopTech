@@ -20,4 +20,12 @@ class ProductModel extends Model
         'description',
         'category',
     ];
+    public function getFinalPriceAttribute()
+{
+    if ($this->discount > 0) {
+        return $this->product_cost * (1 - $this->discount / 100);
+    }
+
+    return $this->product_cost;
+}
 }

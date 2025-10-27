@@ -23,7 +23,7 @@
                 <td><img src="<?php echo e(asset('public/images/' . $product['product_image'])); ?>" width="60"></td>
                 <td><?php echo e(number_format($product['product_price'])); ?>₫</td>
                 <td> <?php echo e(number_format($product['quantity'])); ?></td>
-                <td><?php echo e(number_format($product['product_price'] * $product['quantity'])); ?>₫</td>
+                <td><?php echo e(number_format($product['product_price'] * $product['quantity'], 0, ',', '.')); ?>₫</td>
                 <td>
                     <form action="<?php echo e(route('cart.remove')); ?>" method="POST" style="display:inline-block;">
                         <?php echo csrf_field(); ?>

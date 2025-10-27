@@ -20,11 +20,11 @@
                     </p>
                     <p class="fw-bold">
                         @if($product->discount > 0)
-                        {{ number_format($product->product_cost * (1 - $product->discount/100), 0, ',', '.') }}₫
+                        {{ number_format($product->final_price, 0, ',', '.') }}₫
                         <span class="text-decoration-line-through text-muted">{{ number_format($product->product_cost, 0, ',', '.') }}₫</span>
                         @else
                         {{ number_format($product->product_cost, 0, ',', '.') }}₫
-                        @endif
+                        @endif 
                     </p>
           </div>
         </div>

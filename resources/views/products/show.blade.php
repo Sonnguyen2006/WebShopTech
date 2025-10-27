@@ -26,13 +26,13 @@
       <div class="border border-primary rounded p-3 my-3" 
            style="background-color: #e7f3ff; display: inline-block;">
         <span class="fw-bold text-primary" style="font-size: 1.4rem;">
-          {{ number_format($product->product_cost, 0, ',', '.') }}đ
+          {{ number_format($product->final_price, 0, ',', '.') }}đ
         </span>
       </div>
 
       <!-- Mô tả -->
       <div class="mt-3">
-        <h5 class="fw-semibold mb-2">Mô tả sản phẩm</h5>
+        <h5 class="fw-semibold mb-2">Mô tả sản phẩm</h5>  
         <p class="text-secondary" style="white-space: pre-line;">{{ $product->description }}</p>
       </div>
       <form action="{{ route('cart.add', $product->product_id) }}" method="POST" class="mt-4">
