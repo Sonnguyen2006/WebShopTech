@@ -3,7 +3,7 @@
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
@@ -46,3 +46,5 @@ Route::middleware([UserMiddleware::class])->group(function(){
     //hiển thị trang order theo tên người dùng
     Route::get('/order/{username}', [OrderController::class, 'index'])->name('order.index');
 });
+Route::get('/create',[ProductController::class,'createform'])->name('admin.createform');
+Route::post('/create',[ProductController::class,'create'])->name('create');

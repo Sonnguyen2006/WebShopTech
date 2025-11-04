@@ -54,7 +54,7 @@ class CartController extends Controller
         // Tính tổng tiền
         $total_amount = 0;
         foreach ($cart as $item) {
-            $total_amount += $item['product_price'] * $item['quantity'];
+            $total_amount += $item['product_cost'] * (1 - $item['discount']) * $item['quantity'];
         }
 
         // Tạo Order
@@ -75,7 +75,7 @@ class CartController extends Controller
                 'order_id'   => $order_id,
                 'product_id' => $product_id,
                 'quantity'   => $item['quantity'],
-                'price'      => $item['product_price'],
+                'cost'      => $item['product_cost'],
             ]);
         }
 
