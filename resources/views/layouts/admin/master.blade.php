@@ -13,28 +13,11 @@
         <button class="btn btn-outline-secondary" id="toggleSidebar" title="hide/display sidebar">
             <i class="bi bi-list"></i>
         </button>
-        <button class="btn btn-outline-secondary m-3" id="toggleSidebar">
-  <svg xmlns="http://www.w3.org/2000/svg"
-       width="24" height="24"
-       viewBox="0 0 24 24"
-       fill="none"
-       stroke="currentColor"
-       stroke-width="2"
-       stroke-linecap="round"
-       stroke-linejoin="round"
-       class="tabler-icon tabler-icon-menu">
-    <path d="M4 8l16 0"></path>
-    <path d="M4 16l16 0"></path>
-  </svg>
-</button>
-
-       
-
-       
+        <a class="navbar-brand fw-bold text-primary" href="#">Modernize Admin</a>
     </header>
 
     {{-- MAIN (Sidebar + Content) --}}
-    <div class="main-wrapper" id="mainWrapper">
+    <div class="main-wrapper d-flex" id="mainWrapper">
         {{-- Sidebar --}}
         @include('layouts.admin.sidebar')
 
