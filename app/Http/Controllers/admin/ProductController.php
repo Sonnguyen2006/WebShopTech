@@ -30,7 +30,7 @@ class ProductController extends Controller
         // tạo tên file duy nhất
         $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
         // chuyển vào thư mục public/image
-        $image->move(public_path('image'), $imageName);
+        $image->move(public_path('images'), $imageName);
     }
         ProductModel::create([
             'product_id'=>$request->product_id,
