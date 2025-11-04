@@ -55,60 +55,51 @@
   <div class="row">
     <div id="productCarousel" class="carousel slide" data-bs-wrap="false">
       <div class="carousel-inner">
-
-        {{-- Slide 1 --}}
-        <div class="carousel-item active">
-          <div class="row row-cols-1 row-cols-md-4 g-4">
-            @foreach($products->slice(0, 8) as $product) {{-- 8 sản phẩm = 2 hàng (mỗi hàng 4) --}}
-            <div class="col">
-              <div class="card h-100" onclick="window.location.href='{{ url('/product/' . $product->product_id) }}'" style="cursor:pointer;">
-                <img src="{{ asset('public/images/' . $product->product_image) }}" class="card-img-top" alt="{{ $product->product_name }}">
-                <div class="card-body d-flex flex-column">
-                  <h6 class="card-title">{{ $product->product_name }}</h6>
-                  <p class="fw-bold text-danger">
-                    @if($product->discount > 0)
-                    {{ number_format($product->final_price, 0, ',', '.') }}₫
-                    <span class="text-decoration-line-through text-muted ms-2">
-                      {{ number_format($product->product_cost, 0, ',', '.') }}₫
-                    </span>
-                    @else
-                    {{ number_format($product->product_cost, 0, ',', '.') }}₫
-                    @endif
-                  </p>
-                </div>
-              </div>
-            </div>
-            @endforeach
+      <div class="container my-4 position-relative">
+  <div class="product-slider overflow-hidden">
+    <div class="row flex-nowrap transition" id="oddRow">
+      @foreach($products->where(fn($p, $i) => $i % 2 == 0) as $product)
+      <div class="col-3">
+        <div class="card h-100" onclick="window.location.href='{{ url('/product/' . $product->product_id) }}'" style="cursor:pointer;">
+          <img src="{{ asset('public/images/' . $product->product_image) }}" class="card-img-top" alt="{{ $product->product_name }}">
+          <div class="card-body">
+            <h6 class="card-title">{{ $product->product_name }}</h6>
+            <p class="fw-bold text-danger mb-0">
+              @if($product->discount > 0)
+              {{ number_format($product->final_price, 0, ',', '.') }}₫
+              <span class="text-decoration-line-through text-muted ms-2">{{ number_format($product->product_cost, 0, ',', '.') }}₫</span>
+              @else
+              {{ number_format($product->product_cost, 0, ',', '.') }}₫
+              @endif
+            </p>
           </div>
         </div>
-
-        {{-- Slide 2 --}}
-        <div class="carousel-item">
-          <div class="row row-cols-1 row-cols-md-4 g-4">
-            @foreach($products->slice(8, 8) as $product)
-            <div class="col">
-              <div class="card h-100" onclick="window.location.href='{{ url('/product/' . $product->product_id) }}'" style="cursor:pointer;">
-                <img src="{{ asset('public/images/' . $product->product_image) }}" class="card-img-top" alt="{{ $product->product_name }}">
-                <div class="card-body d-flex flex-column">
-                  <h6 class="card-title">{{ $product->product_name }}</h6>
-                  <p class="fw-bold text-danger">
-                    @if($product->discount > 0)
-                    {{ number_format($product->final_price, 0, ',', '.') }}₫
-                    <span class="text-decoration-line-through text-muted ms-2">
-                      {{ number_format($product->product_cost, 0, ',', '.') }}₫
-                    </span>
-                    @else
-                    {{ number_format($product->product_cost, 0, ',', '.') }}₫
-                    @endif
-                  </p>
-                </div>
-              </div>
-            </div>
-            @endforeach
-          </div>
-        </div>
-
       </div>
+      @endforeach
+    </div>
+
+    <div class="row flex-nowrap transition mt-3" id="evenRow">
+      @foreach($products->where(fn($p, $i) => $i % 2 == 1) as $product)
+      <div class="col-3">
+        <div class="card h-100" onclick="window.location.href='{{ url('/product/' . $product->product_id) }}'" style="cursor:pointer;">
+          <img src="{{ asset('public/images/' . $product->product_image) }}" class="card-img-top" alt="{{ $product->product_name }}">
+          <div class="card-body">
+            <h6 class="card-title">{{ $product->product_name }}</h6>
+            <p class="fw-bold text-danger mb-0">
+              @if($product->discount > 0)
+              {{ number_format($product->final_price, 0, ',', '.') }}₫
+              <span class="text-decoration-line-through text-muted ms-2">{{ number_format($product->product_cost, 0, ',', '.') }}₫</span>
+              @else
+              {{ number_format($product->product_cost, 0, ',', '.') }}₫
+              @endif
+            </p>
+          </div>
+        </div>
+      </div>
+      @endforeach
+    </div>
+  </div>
+
 
       {{-- Nút điều hướng --}}
       <!-- Prev -->
