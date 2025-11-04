@@ -1,0 +1,85 @@
+.btn-remove {
+    background-color: red;      /* nền đỏ */
+    color: white;               /* chữ trắng */
+    border: 2px solid red;      /* viền đỏ */
+    border-radius: 8px;         /* bo góc */
+    padding: 5px 15px;          /* khoảng cách chữ và viền */
+    cursor: pointer;            /* con trỏ tay khi hover */
+    transition: all 0.3s ease;  /* mượt khi hover */
+}
+
+.btn-remove:hover {
+    background-color: white;    /* nền trắng khi hover */
+    color: red;                 /* chữ đỏ khi hover */
+    border: 2px solid red;      /* viền vẫn đỏ */
+}
+
+.btn-success {
+    background-color: green;      /* nền đỏ */
+    color: white;               /* chữ trắng */
+    border: 2px solid green;      /* viền đỏ */
+    border-radius: 8px;         /* bo góc */
+    padding: 5px 15px;          /* khoảng cách chữ và viền */
+    cursor: pointer;            /* con trỏ tay khi hover */
+    transition: all 0.3s ease;  /* mượt khi hover */
+}
+
+.btn-success:hover {
+    background-color: white;    /* nền trắng khi hover */
+    color: green;                 /* chữ đỏ khi hover */
+    border: 2px solid green;      /* viền vẫn đỏ */
+}
+.bill{
+    display: flex;
+    justify-content: space-between;
+}
+/* Modal nền + blur + fade */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px); /* blur background */
+    background-color: rgba(0,0,0,0.3);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+/* Khi active, modal hiển thị */
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+
+/* Modal content scale + slide */
+.modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    width: 50%;
+    max-width: 600px;
+    margin: 10% auto;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: scale(0.8);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+/* Khi modal hiển thị, content scale lên */
+.modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Nút đóng */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover { color: #000; }
