@@ -16,14 +16,6 @@
                 <li><a href="#"><i class="fa fa-clone me-2"></i> Edit products</a></li>
             </ul>
 
-<<<<<<< HEAD
-            <h6 class="mt-4 mb-2">Sales</h6>
-            <ul class="list-unstyled">
-                <li><a href="#"><i class="fa fa-sign-in me-2"></i> Login</a></li>
-                <li><a href="#"><i class="fa fa-user-plus me-2"></i> Register</a></li>
-            </ul>
-        </aside>
-=======
   <h6 class="text-uppercase mt-4 mb-2">Home</h6>
   <ul class="list-unstyled">
     <li><a href="/dashboard" class="text-black d-block py-2"><i class="fa fa-home me-2"></i> Dashboard</a></li>
@@ -76,4 +68,3 @@
     }
   });
 </script>
->>>>>>> e018151e0a7ee06cb35a8b221f997dfd7cef1cac
