@@ -21,4 +21,4 @@
                 <li><a href="#"><i class="fa fa-sign-in me-2"></i> Login</a></li>
                 <li><a href="#"><i class="fa fa-user-plus me-2"></i> Register</a></li>
             </ul>
-        </aside>
+        </aside><?php /**PATH D:\xampp\htdocs\WebShopTech\resources\views/layouts/admin/sidebar.blade.php ENDPATH**/ ?>
