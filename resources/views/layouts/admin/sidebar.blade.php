@@ -34,37 +34,4 @@
   </ul>
 </aside>
 
-<!-- Overlay mờ nền -->
-<div id="overlay" 
-     style="position:fixed; top:0; left:0; width:100%; height:100%; 
-            background:rgba(0,0,0,0.4); display:none; z-index:1040;">
-</div>
 
-<!-- JS toggle -->
-<script>
-  const toggleBtn = document.getElementById('toggleSidebar');
-  const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('overlay');
-
-  // Mở/đóng sidebar khi bấm nút
-  toggleBtn.addEventListener('click', (e) => {
-    e.stopPropagation(); // không lan click ra ngoài
-    const isOpen = sidebar.style.transform === 'translateX(0%)';
-    sidebar.style.transform = isOpen ? 'translateX(-100%)' : 'translateX(0%)';
-    overlay.style.display = isOpen ? 'none' : 'block';
-  });
-
-  // Ẩn sidebar khi click ra ngoài (overlay)
-  overlay.addEventListener('click', () => {
-    sidebar.style.transform = 'translateX(-100%)';
-    overlay.style.display = 'none';
-  });
-
-  // Nếu click vào bất kỳ đâu ngoài sidebar và nút menu → ẩn sidebar
-  document.addEventListener('click', (e) => {
-    if (!sidebar.contains(e.target) && e.target !== toggleBtn) {
-      sidebar.style.transform = 'translateX(-100%)';
-      overlay.style.display = 'none';
-    }
-  });
-</script>

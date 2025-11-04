@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,9 +13,6 @@
         <button class="btn btn-outline-secondary" id="toggleSidebar" title="hide/display sidebar">
             <i class="bi bi-list"></i>
         </button>
-<<<<<<< HEAD
-        <a class="navbar-brand fw-bold text-primary" href="#">Modernize Admin</a>
-=======
         <button class="btn btn-outline-secondary m-3" id="toggleSidebar">
   <svg xmlns="http://www.w3.org/2000/svg"
        width="24" height="24"
@@ -30,12 +27,10 @@
     <path d="M4 16l16 0"></path>
   </svg>
 </button>
-@include('layouts.admin.sidebar')
-        {{-- Logo hoặc tên --}}
-        <a class="navbar-brand fw-bold text-primary" stylehref="#" style="padding-right: 2500px;">Modernize Admin</a>
 
        
->>>>>>> e018151e0a7ee06cb35a8b221f997dfd7cef1cac
+
+       
     </header>
 
     {{-- MAIN (Sidebar + Content) --}}
