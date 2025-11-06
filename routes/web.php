@@ -21,6 +21,8 @@ Route::get('/', function () {
 Route::middleware([AdminMiddleware::class] )->group(function () {
     Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
     Route::get('/user_management',[ UserManagementController::class, 'index'])->name('edit users');
+    Route::get('/create',[ProductController::class,'createform'])->name('admin.createform');
+    Route::post('/create',[ProductController::class,'create'])->name('create');
 });
 Route::get('/register', [UserController::class, 'registerform'])->name('registerform');
 Route::post('/register', [UserController::class, 'register'])->name('register');
@@ -48,8 +50,4 @@ Route::middleware([UserMiddleware::class])->group(function(){
     //hiển thị trang order theo tên người dùng
     Route::get('/order/{username}', [OrderController::class, 'index'])->name('order.index');
 });
-<<<<<<< HEAD
-=======
-Route::get('/create',[ProductController::class,'createform'])->name('admin.createform');
-Route::post('/create',[ProductController::class,'create'])->name('create');
->>>>>>> 185b78387ab9de3c7fb8a057d19acbb2a241f20a
+
