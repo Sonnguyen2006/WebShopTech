@@ -20,7 +20,7 @@ return new class extends Migration
             $table->decimal('discount',5,2);	
             $table->text('description')->nullable(false);             // mô tả sản phẩm
             $table->text('category')->nullable(false);
-            $table->tinyInteger('rating')->nullable(false);
+            $table->tinyInteger('rating')->nullable();
             $table->timestamps(); // created_at & updated_at
         });
     }

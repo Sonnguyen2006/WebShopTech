@@ -16,7 +16,7 @@ return new class extends Migration
         $table->string('order_id'); // trùng với order_id trong bảng orders
         $table->string('product_id');
         $table->integer('quantity');
-        $table->decimal('price', 10, 2);
+        $table->decimal('product_cost', 10, 2);
         $table->timestamps();
 
         $table->foreign('product_id')->references('product_id')->on('products')->onDelete('cascade');
