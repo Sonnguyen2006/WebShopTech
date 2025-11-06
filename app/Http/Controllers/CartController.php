@@ -24,8 +24,9 @@ class CartController extends Controller
         } else {
             $cart[$product_id] = [
                 'product_name'  => $product->product_name,
-                'product_price' => $product->final_price,
+                'product_cost' => $product->final_price,
                 'product_image' => $product->product_image,
+                'discount'      => $product->discount,
                 'quantity'      => 1,
             ];
         }
@@ -54,7 +55,8 @@ class CartController extends Controller
         // Tính tổng tiền
         $total_amount = 0;
         foreach ($cart as $item) {
-            $total_amount += $item['product_cost'] * (1 - $item['discount']) * $item['quantity'];
+
+            $total_amount += $item['product_cost'] * (1 - $item['discount']/100) * $item['quantity'];
         }
 
         // Tạo Order
@@ -71,11 +73,15 @@ class CartController extends Controller
 
         // Tạo OrderDetail cho từng sản phẩm
         foreach ($cart as $product_id => $item) {
+            
+            $finalPrice = isset($item['discount']) && $item['discount'] > 0
+                ? $item['product_cost'] * (1 - $item['discount'] / 100)
+                : $item['product_cost'];
             OrderDetail::create([
                 'order_id'   => $order_id,
                 'product_id' => $product_id,
                 'quantity'   => $item['quantity'],
-                'cost'      => $item['product_cost'],
+                'price'      => $finalPrice,
             ]);
         }
 

@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::middleware([AdminMiddleware::class] )->group(function () {
     Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
-    Route::get('/user_management',[ UserManagementController::class, 'index'])->name('edit users');
+    Route::get('/user_management',[ UserManagementController::class, 'index'])->name('edit_users');
     Route::get('/create',[ProductController::class,'createform'])->name('admin.createform');
     Route::post('/create',[ProductController::class,'create'])->name('create');
 });
