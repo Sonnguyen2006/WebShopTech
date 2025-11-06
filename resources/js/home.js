@@ -4,7 +4,7 @@
   const nextBtn = document.getElementById('nextBtn');
   const prevBtn = document.getElementById('prevBtn');
 
-  const colWidth = oddRow.querySelector('.col-3').offsetWidth + 1; // 16px gap
+  const colWidth = oddRow.querySelector('.col-3').offsetWidth + 10; // 16px gap
   const totalItems = oddRow.querySelectorAll('.col-3').length;
   const visibleCols = 4; // hiển thị 4 cột
   const maxIndex = totalItems - visibleCols;

@@ -30,9 +30,9 @@
     </div>
 
     <!-- Banner & Slider -->
-    <div class="col-md-8">
+    <div class="col-md-9">
       <!-- Carousel -->
-      <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel" >
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="{{asset('public/images/banner/1.png')}}" class="d-block w-100" alt="banner">

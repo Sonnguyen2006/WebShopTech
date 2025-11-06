@@ -17,9 +17,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('/admin', [AdminController::class, 'admin'])
-    ->name('admin')
-    ->middleware([AdminMiddleware::class]);
+Route::middleware([AdminMiddleware::class] )->group(function () {
+    Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
+});
 Route::get('/register', [UserController::class, 'registerform'])->name('registerform');
 Route::post('/register', [UserController::class, 'register'])->name('register');
 // Route::get('/login',[UserController::class,'loginform'])->name('loginform');
