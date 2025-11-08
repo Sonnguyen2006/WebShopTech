@@ -19,5 +19,4 @@ class OrderController extends Controller
             //dùng compact đẩy dữ liệu ra orders.index
         return view('orders.index', compact('orders'));
     }
-
 }

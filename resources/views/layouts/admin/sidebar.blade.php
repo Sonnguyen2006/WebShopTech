@@ -18,7 +18,7 @@
   <h6 class="text-uppercase mt-4 mb-2">Function</h6>
   <ul class="list-unstyled">
     <li><a href="{{ route('create') }}" class="text-black d-block py-2"><i class="fa fa-font me-2"></i> Create Product</a></li>
-    <li><a href="/utilities/shadow" class="text-black d-block py-2"><i class="fa fa-clone me-2"></i> Product Management</a></li>
+    <li><a href="{{route('order')}}" class="text-black d-block py-2"><i class="fa fa-clone me-2"></i> Product Management</a></li>
   </ul>
 
   <h6 class="text-uppercase mt-4 mb-2">Auth</h6>
