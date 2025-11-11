@@ -31,7 +31,6 @@
                 <th>Phương thước thanh toán</th>
                 <th>Địa chỉ</th>
                 <th>Trạng thái</th>
-                <th>Hành động</th>
             </tr>
         </thead>
         <tbody>
@@ -43,7 +42,6 @@
                 <td>{{ number_format($order->total_amount, 0, ',', '.') }}₫</td>
                 <td>{{ $order->payment_method }}</td>
                 <td>{{ $order->address }}</td>
-                <td>{{ $order->status }}</td>
                 <td>
                     <div class="custom-select-wrapper w-100">
                         <form action="{{ route('orders.updateStatus', $order->id) }}" method="POST">
