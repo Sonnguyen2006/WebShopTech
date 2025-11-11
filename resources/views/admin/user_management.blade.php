@@ -43,7 +43,7 @@
             <td>{{ $item->created_at->format('Y-m-d') }}</td>
             <!-- các chức năng chỉnh sửa và xem thong tin người dùng -->
             <td class="text-center">
-                <a href="#" class="btn btn-sm btn-info text-white" title="Xem chi tiết">
+                <a href="{{ route('admin.users.show', $item->user_id) }}" class="btn btn-sm btn-info text-white" title="Xem chi tiết">
                     <i class="bi bi-eye"></i>
                 </a>
                 <a href="#}" class="btn btn-sm btn-warning text-white" title="Sửa">

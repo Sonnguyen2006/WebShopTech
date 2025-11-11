@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserManagement;
+use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
@@ -18,11 +19,13 @@ Route::get('/', function () {
 });
 
 
-Route::middleware([AdminMiddleware::class] )->group(function () {
-    Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
-    Route::get('/user_management',[UserManagement::class,'index'])->name('edit_users');
+Route::prefix('admin')->middleware([AdminMiddleware::class] )->group(function () {
+    Route::get('/', [AdminController::class, 'admin'])->name('admin');
+    Route::get('/user_management',[UserManagementController::class,'index'])->name('edit_users');
     Route::get('/create',[ProductController::class,'createform'])->name('admin.createform');
     Route::post('/create',[ProductController::class,'create'])->name('create');
+     // Trang chi tiết người dùng
+     Route::get('/users/{user_id}', [UserManagementController::class, 'show'])->name('admin.users.show');
 });
 Route::get('/register', [UserController::class, 'registerform'])->name('registerform');
 Route::post('/register', [UserController::class, 'register'])->name('register');
