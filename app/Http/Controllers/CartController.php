@@ -26,6 +26,7 @@ class CartController extends Controller
                 'product_name'  => $product->product_name,
                 'product_cost' => $product->final_price,
                 'product_image' => $product->product_image,
+                'discount'      => $product->discount,
                 'quantity'      => 1,
                 'discount'      => $product->discount ?? 0,
             ];
@@ -72,6 +73,10 @@ class CartController extends Controller
 
         // Tạo OrderDetail cho từng sản phẩm
         foreach ($cart as $product_id => $item) {
+            
+            $finalPrice = isset($item['discount']) && $item['discount'] > 0
+                ? $item['product_cost'] * (1 - $item['discount'] / 100)
+                : $item['product_cost'];
             OrderDetail::create([
                 'order_id'   => $order_id,
                 'product_id' => $product_id,
