@@ -394,8 +394,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             'reference' => '19ab2652d18f872a4025e3757b91f4e63c00bc27',
 =======
 <<<<<<< HEAD
