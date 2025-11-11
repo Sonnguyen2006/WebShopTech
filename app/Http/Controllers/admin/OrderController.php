@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderStatusMail;
 
 class OrderController extends Controller
 {
@@ -26,6 +28,7 @@ class OrderController extends Controller
             'status'=>$request->status
         ]);
         $order->save();
+        Mail::to($order->email)->send(new OrderStatusMail($order));
         return redirect()->route('order')->with('success', 'Cập nhật trạng thái đơn hàng thành công!');
     }
 
