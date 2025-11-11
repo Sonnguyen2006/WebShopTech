@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\UserManagement;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\UserManagementController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\UserMiddleware;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::middleware([AdminMiddleware::class] )->group(function () {
     Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
-    Route::get('/user_management',[ UserManagementController::class, 'index'])->name('edit_users');
+    Route::get('/user_management',[UserManagement::class,'index'])->name('edit_users');
     Route::get('/create',[ProductController::class,'createform'])->name('admin.createform');
     Route::post('/create',[ProductController::class,'create'])->name('create');
 });
