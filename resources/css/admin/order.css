@@ -1,0 +1,17 @@
+.status-select option {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    background-color: white;
+    color: #495057;
+}
+
+    /* Bo tròn hai góc dưới của dropdown */
+.dropdown-menu.rounded-bottom-2 {
+    border-radius: 0 0 0.5rem 0.5rem !important;
+    border: none; /* loại bỏ khung viền mặc định */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.dropdown-menu button.dropdown-item:hover {
+    background-color: #e9ecef;
+}

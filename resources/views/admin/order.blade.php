@@ -10,6 +10,7 @@
 
 <!-- Link Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="asset('resources/css/admin/order.css')">
 
 <div class="container mt-4">
     <h1 class="mb-4">Danh sách tất cả đơn hàng</h1>
@@ -68,23 +69,3 @@
     </table>
 </div>
 @endsection
-<style>
-    .status-select option {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    background-color: white;
-    color: #495057;
-}
-
-    /* Bo tròn hai góc dưới của dropdown */
-.dropdown-menu.rounded-bottom-2 {
-    border-radius: 0 0 0.5rem 0.5rem !important;
-    border: none; /* loại bỏ khung viền mặc định */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.dropdown-menu button.dropdown-item:hover {
-    background-color: #e9ecef;
-}
-
-</style>
