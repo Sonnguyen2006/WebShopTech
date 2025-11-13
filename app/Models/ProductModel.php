@@ -19,6 +19,7 @@ class ProductModel extends Model
         'discount',
         'description',
         'category',
+        'rating',
     ];
     public function getFinalPriceAttribute()
 {
