@@ -80,7 +80,7 @@
   </div>
 </nav>
 <main class="py-4">
-    <?php echo $__env->yieldContent('content'); ?>
+    <?php echo $__env->yieldContent('content'); ?> 
 </main>
 <footer class="bg-light border-top py-4 mt-auto">
     <div class="container text-center small">
