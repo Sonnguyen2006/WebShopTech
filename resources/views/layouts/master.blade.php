@@ -15,11 +15,16 @@
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  
   <div class="container-fluid">
-    <!-- Logo -->
-    <a class="navbar-brand fw-bold text-white" href="{{ route('home') }}">
-      TechShop
-    </a>
+    <div class="logo">
+  <a href="/" class="text-black text-decoration-none">
+    <img src="{{ asset('public/images/logo/Copilot_20251007_105042.png') }}" 
+         alt="Logo" class="img-fluid" style="max-height:100px;">
+  </a>
+</div>
+
+   
 
     <!-- Button responsive -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">

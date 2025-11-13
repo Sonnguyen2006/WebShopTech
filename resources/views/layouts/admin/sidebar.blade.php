@@ -1,7 +1,8 @@
 <aside id="sidebar" class="sidebar bg-white text-black p-3">
   <div class="logo mb-4">
     <a href="/" class="text-black text-decoration-none">
-      <img src="/images/logos/dark-logo.svg" alt="Logo">
+      <img src="{{ asset('public/images/logo/Copilot_20251007_105042.png') }}" alt="Logo">
+
     </a>
   </div>
 
