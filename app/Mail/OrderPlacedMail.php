@@ -9,28 +9,28 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class OrderStatusMail extends Mailable
+class OrderPlacedMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $order;
-   
 
     /**
      * Create a new message instance.
      */
     public function __construct($order)
     {
-        $this->order=$order;
-        ;
+        //
+        $this->order = $order;
     }
 
     /**
      * Get the message envelope.
      */
     public function envelope(): Envelope
-    {   return new Envelope(
-        
-        subject:'Cập nhật trạng thái đơn hàng #' . $this->order->id
+    {
+        return new Envelope(
+            subject: 'Xác nhận đơn hàng #' . $this->order->order_id,
+
         );
     }
 
@@ -40,10 +40,7 @@ class OrderStatusMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.OrderStatusMail',
-            with: [
-                'order' => $this->order,
-            ],
+            view: 'mail.order_placed',
         );
     }
 
@@ -56,5 +53,4 @@ class OrderStatusMail extends Mailable
     {
         return [];
     }
-    
 }

@@ -8,7 +8,7 @@
 
   <h6 class="mt-4 mb-2">Home</h6>
   <ul class="list-unstyled">
-    <li><a href="#"><i class="fa fa-home me-2"></i> Dashboard</a></li>
+    <li><a href="{{ route('admin.report') }}"><i class="fa fa-home me-2"></i> Dashboard</a></li>
   </ul>
 
   <h6 class="text-uppercase mt-4 mb-2">Function</h6>

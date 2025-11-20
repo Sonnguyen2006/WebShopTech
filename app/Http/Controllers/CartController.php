@@ -7,7 +7,9 @@ use App\Models\OrderModel;
 use App\Models\ProductModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use App\Mail\OrderPlacedMail;
 
 class CartController extends Controller
 {
@@ -84,7 +86,7 @@ class CartController extends Controller
                 'product_cost'      => $item['product_cost'],
             ]);
         }
-
+        Mail::to($order->email)->send(new OrderPlacedMail($order));
         // Xóa giỏ hàng
         session()->forget('cart');
         session(['cart_count' => 0]);

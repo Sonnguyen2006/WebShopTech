@@ -12,6 +12,7 @@ use App\Http\Controllers\OrderController as UserOrderController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\UserMiddleware;
+use App\Http\Controllers\admin\ReportController;
 
 
 
@@ -33,6 +34,7 @@ Route::middleware([AdminMiddleware::class])->group(function(){
     // ✅ Cập nhật trạng thái đơn hàng
     Route::patch('/admin/orders/update-status/{order_id}', [AdminOrderController::class, 'UpdateStatus'])
         ->name('orders.updateStatus');
+        Route::get('/admin/reports', [ReportController::class, 'report'])->name('admin.report');
 });
 
 

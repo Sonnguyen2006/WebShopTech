@@ -16,6 +16,16 @@ class OrderController extends Controller
       $orders=OrderModel::with('user',)->latest()->get();
       return view('admin.order', compact('orders'));
     }
+    public function OrderConfirm($order_id)
+    {
+      $order=OrderModel::findOrFail($order_id);
+      $order->update([
+        'status'=>'pending'
+      ]);
+      $order->save();
+      Mail::to($order->email)->send(new OrderStatusMail($order));
+      return redirect()->route('order')->with('success', 'Xác nhận đơn hàng thành công!');
+    }
 
     public function UpdateStatus(Request $request, $order_id)
     {
