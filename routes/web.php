@@ -60,6 +60,9 @@ Route::get('/product/{product_id}', [UserProductController::class, 'show'])->nam
 Route::post('/cart/add/{product_id}', [CartController::class, 'add'])->name('cart.add');
 Route::get('/category/{slug}', [UserProductController::class, 'category'])->name('category.show');
 Route::get('/promotion', [UserProductController::class, 'promotion'])->name('promotion');
+// Route AJAX gợi ý autocomplete
+Route::get('/search-suggestions', [HomeController::class, 'suggestions'])->name('search.suggestions');
+
 //show ra các sản phẩn đã cho vào giỏ hàng
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::middleware([UserMiddleware::class])->group(function(){
@@ -69,4 +72,5 @@ Route::middleware([UserMiddleware::class])->group(function(){
     Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
     //hiển thị trang order theo tên người dùng
     Route::get('/order/{username}', [UserOrderController::class, 'index'])->name('order.index');
+    Route::get('/order/{username}/{order_id}', [UserOrderController::class, 'show'])->name('order.show');
 });

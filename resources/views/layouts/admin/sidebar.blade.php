@@ -19,6 +19,6 @@
 
   <h6 class="text-uppercase mt-4 mb-2">Auth</h6>
   <ul class="list-unstyled">
-    <li><a href="/authentication/login" class="text-black d-block py-2"><i class="fa fa-sign-in me-2"></i> Logout</a></li>
+    <li><a href="#" class="text-black d-block py-2"><i class="fa fa-sign-in me-2"></i> Logout</a></li>
   </ul>
 </aside>

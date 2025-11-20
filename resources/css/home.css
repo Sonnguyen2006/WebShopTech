@@ -1,168 +1,230 @@
+/* ==============================
+   BODY & LAYOUT
+============================== */
 body {
-            background-color: #f8f9fa;
-        }
-        .row{
-            margin: 20px;
-        }
-        .navbar {
-            background-color: #d70018;
-        }
-        .navbar a, .navbar-brand, .navbar-toggler-icon {
-            color: white !important;
-        }
-        .navbar .nav-link {
-            color: #fff;                  /* mặc định chữ trắng */
-            transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-            border-radius: 12px; 
-        }
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-        .navbar .nav-link:hover {
-            background-color: rgba(47, 4, 4, 0.725); /* thêm nền sáng nhẹ */
-        }
-        .category-menu {
-            background: white;
-            border-radius: 5px;
-            padding: 10px;
-        }
-        .category-item {
-            padding: 8px;
-            border-bottom: 1px solid #eee;
-        }
-        .category-item:last-child {
-            border-bottom: none;
-        }
-        .category-item a {
-            text-decoration: none;
-            color: #333;
-            transition: background-color 0.2s ease-in-out; /*hoàn thành animation trong 0.2s*/
-            display: block;
-            padding: 10px 15px;
-        }
-        .category-item a:hover {
-            background-color: #f1f1f1;    /* nền xám nhạt khi hover */
-            color: #000;                  /* giữ màu chữ */
-        }
-        .category-item a:hover {
-            color: #d70018;
-        }
-        .banner img {
-            border-radius: 10px;
-            width: 100%;
-            height: auto;
-        }
-        .product-title {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;   /* Hiện tối đa 2 dòng */
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            min-height: 48px;        /* Chiều cao cố định 2 dòng */
-        }
-        .product-favorate {
-            color: #fff;
-            transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-            border-radius: 12px;
-            padding: 2px 6px; /* cho dễ click */
-        }
+.container {
+    margin-top: 20px;
+}
 
-        .product-favorate:hover {
-            background-color: rgba(47, 4, 4, 0.725);
-        }
-        
+/* ==============================
+   NAVBAR
+============================== */
+.navbar {
+    background: #d70018 !important;
+    padding: 10px 0;
+}
 
-        .product-favorate a {
-            text-decoration: none; /* bỏ gạch chân */
-            color: #000;
-        }
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            background-size: 100% 75%;
-            background-color: gray;
-            padding: 25px;
-            border-radius: 50%;
-            width: auto; 
-        }
-        .carousel-control-prev,
-        .carousel-control-next {
-            z-index: 9999 !important; /* cao hơn cả card */
-        }
+.navbar-brand {
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+    color: #fff !important;
+}
 
-        .carousel-control-prev {
-            left: -40px;              /* đẩy mũi tên ra ngoài rìa bên trái */
-        }
+.navbar a, .navbar .nav-link {
+    color: #fff;
+    transition: 0.2s;
+    border-radius: 12px;
+}
 
-        .carousel-control-next {
-            right: -40px;             /* đẩy mũi tên ra ngoài rìa bên phải */
-        }
+.navbar .nav-link:hover {
+    background-color: rgba(47, 4, 4, 0.725);
+    opacity: 1;
+}
 
-        .carousel-control-prev-icon {
-            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='black' d='M5.25 0L6.25 1 2.5 4l3.75 3-1 1L0.5 4 5.25 0z'/%3E%3C/svg%3E");
-        }
+.navbar-toggler-icon {
+    filter: invert(1);
+}
 
-        .carousel-control-next-icon {
-            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='black' d='M2.75 0L1.75 1 5.5 4l-3.75 3 1 1L7.5 4 2.75 0z'/%3E%3C/svg%3E");
-        }
-        .card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            z-index: 1;
-        }
+/* ==============================
+   SEARCH BOX
+============================== */
+#search-input {
+    border-radius: 10px 0 0 10px;
+    padding-left: 15px;
+}
 
-        .card:hover {
-            transform: scale(1.03); /* phóng to 5% */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* thêm bóng cho đẹp */
-            z-index: 2; /* nổi lên trên các thẻ khác */
-        }
-        .product-carousel {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            margin-top: 20px;
-          }
-          
-          .carousel-viewport {
-            overflow: hidden;
-            width: 100%;
-          }
-          
-          .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            gap: 1rem;
-            margin-bottom: 1rem;
-          }
-          
-          .product-card {
-            flex: 0 0 25%; /* 4 cột mỗi lần hiển thị */
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            text-align: center;
-            padding: 10px;
-            transition: transform 0.2s ease;
-            cursor: pointer;
-          }
-          .product-card:hover {
-            transform: scale(1.05);
-          }
-          .product-card img {
-            width: 100%;
-            border-radius: 10px;
-          }
-          
-          .carousel-btn {
-            position: absolute;
-            top: 45%;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            border: none;
-            font-size: 1.5rem;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            border-radius: 50%;
-            z-index: 10;
-          }
-          .carousel-btn.prev { left: 10px; }
-          .carousel-btn.next { right: 10px; }
-          .transition {
-            transition: transform 0.4s ease-in-out;
-          }
-          
+.btn-search {
+    border-radius: 0 10px 10px 0;
+    font-weight: bold;
+}
+
+/* Suggest box */
+#suggestions-box .list-group-item {
+    cursor: pointer;
+}
+
+#suggestions-box .list-group-item:hover {
+    background: #f8f9fa;
+}
+
+/* ==============================
+   CART BADGE
+============================== */
+.cart-badge {
+    font-size: 12px;
+    padding: 3px 6px;
+}
+
+/* ==============================
+   CATEGORY SIDEBAR
+============================== */
+.category-box, .category-menu {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px 0;
+}
+
+.category-item a {
+    display: block;
+    padding: 12px 18px;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+    text-decoration: none;
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+.category-item a i {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.category-item a:hover {
+    background: #ffe4e8;
+    border-left: 4px solid #d70018;
+    color: #d70018;
+}
+
+.category-item a.active {
+    background: #ffebee;
+    border-left: 4px solid #d70018;
+    color: #d70018 !important;
+}
+
+/* ==============================
+   BANNER / SLIDER
+============================== */
+.banner-slider, .banner-img {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+.banner-control {
+    background-size: 100% 100%;
+    width: 40px;
+    height: 40px;
+}
+
+/* ==============================
+   CARDS / PRODUCTS
+============================== */
+.card, .product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.card:hover, .product-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.product-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 48px;
+}
+
+/* ==============================
+   FAVORITE BUTTON
+============================== */
+.product-favorate {
+    color: #fff;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    border-radius: 12px;
+    padding: 2px 6px;
+}
+
+.product-favorate:hover {
+    background-color: rgba(47, 4, 4, 0.725);
+}
+
+.product-favorate a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* ==============================
+   CAROUSEL PRODUCT
+============================== */
+.product-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.carousel-viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 45%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+.transition {
+    transition: transform 0.4s ease-in-out;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+footer {
+    background: #f2f2f2;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 14px;
+}
