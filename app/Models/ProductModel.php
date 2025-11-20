@@ -28,4 +28,10 @@ class ProductModel extends Model
 
     return $this->product_cost;
 }
+public function branches()
+{
+    return $this->belongsToMany(BranchModel::class, 'branch_inventory')
+                ->withPivot('quantity')
+                ->withTimestamps();
+}
 }
