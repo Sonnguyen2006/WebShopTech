@@ -29,7 +29,9 @@
                     <form action="{{ route('cart.remove') }}" method="POST" style="display:inline-block;">
                         @csrf
                         <input type="hidden" name="id" value="{{ $id }}">
-                        <button type="submit" class="btn-remove">Xóa</button>
+                        <button type="submit" class="btn-remove">
+                            <i class="bi bi-trash"></i>
+                        </button>
                     </form>
                 </td>
             </tr>

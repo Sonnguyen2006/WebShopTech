@@ -1,0 +1,25 @@
+    /* Pagination tròn + màu nền xám cho active */
+    .pagination .page-item.active .page-link {
+        background-color: #a6aeb5 !important; /* màu xám */
+        border-radius: 50%; /* hình tròn */
+        border: none;
+    }
+    
+    /* Xoá border mặc định của các nút */
+    .pagination .page-link {
+        border-radius: 50%; /* tất cả nút tròn */
+        border: none;
+        color: #495057;
+    }
+    
+    /* Hover màu xám nhạt */
+    .pagination .page-link:hover {
+        background-color: #e2e6ea;
+        color: #8a9199;
+    }
+    
+    /* Mũi tên không có khung */
+    .pagination .page-item.disabled .page-link,
+    .pagination .page-item .page-link {
+        border: none;
+    }

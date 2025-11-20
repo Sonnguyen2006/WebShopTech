@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechShop</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('resources/css/master.css') }}">
-    <link rel="stylesheet" href="{{ asset('resources/css/home.css') }}">
-    @yield('styles')
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechShop</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('resources/css/master.css') }}">
+  <link rel="stylesheet" href="{{ asset('resources/css/home.css') }}">
+  @yield('styles')
 </head>
 
 <body>
@@ -26,18 +28,18 @@
 
    
 
-    <!-- Button responsive -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <!-- Button responsive -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <!-- Nội dung navbar -->
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-      <!-- Form search (ra giữa) -->
-     <form action="{{route ('products.search')}}" method="get" class="d-flex me-4" style="width: 400px;">
-        <input class="form-control me-2" type="search" name="keyword" placeholder="Bạn muốn mua gì hôm nay?">
+      <!-- Nội dung navbar -->
+      <form action="{{ route('products.search') }}" method="get" class="d-flex me-4 position-relative" style="width: 400px;">
+        <input class="form-control me-2" type="text" id="search-input" name="keyword" placeholder="Bạn muốn mua gì hôm nay?">
         <button class="btn btn-light" type="submit">Tìm</button>
+        <div id="suggestions-box" class="list-group position-absolute w-100" style="z-index:1050; top:100%; left:0; max-height:300px; overflow-y:auto;"></div>
       </form>
+
 
 
       <!-- Menu Giỏ hàng & Đăng nhập -->
@@ -55,43 +57,52 @@
 
         <!-- Đăng nhập -->
         @guest
-          <li class="nav-item">
-            <a href="{{ route('login') }}" class="nav-link text-white">
-              <i class="fa fa-user"></i> Đăng nhập
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="{{ route('login') }}" class="nav-link text-white">
+            <i class="fa fa-user"></i> Đăng nhập
+          </a>
+        </li>
         @else
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-              <i class="fa fa-user-circle"></i> {{ Auth::user()->name }}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+            <i class="fa fa-user-circle"></i> {{ Auth::user()->name }}
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item" href="#" style="color: blue !important;">Thông tin cá nhân</a>
+            <a class="dropdown-item" href="{{route('order.index' , ['username' => Auth::user()->name])}}" style="color: blue !important;">Lịch sử mua hàng</a>
+            <a class="dropdown-item" href="{{ route('logout') }}" style="color: red !important;"
+              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              Đăng xuất
             </a>
-            <div class="dropdown-menu dropdown-menu-end">
-              <a class="dropdown-item" href="#" style="color: blue !important;">Thông tin cá nhân</a>
-              <a class="dropdown-item" href="{{route('order.index' , ['username' => Auth::user()->name])}}" style="color: blue !important;">Lịch sử mua hàng</a>
-              <a class="dropdown-item" href="{{ route('logout') }}" style="color: red !important;"
-                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                 Đăng xuất
-              </a>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-              </form>
-            </div>
-          </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+            </form>
+          </div>
+        </li>
         @endguest
       </ul>
     </div>
-  </div>
-</nav>
-<main class="py-4">
-    @yield('content');
-</main>
-<footer class="bg-light border-top py-4 mt-auto">
-    <div class="container text-center small">
-        &copy; {{ date('Y') }} TechShop. All rights reserved.
-        <div>
-            <a>Điều khoản</a> · <a >Quyền riêng tư</a>
-        </div>
     </div>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </nav>
+  <main class="py-4">
+    @yield('content')
+  </main>
+  <footer class="bg-light border-top py-4 mt-auto">
+    <div class="container text-center small">
+      &copy; {{ date('Y') }} TechShop. All rights reserved.
+      <div>
+        <a>Điều khoản</a> · <a>Quyền riêng tư</a>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
   <script src="{{ asset('resources/js/home.js') }}"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    //tạo các biến co đường dẫn tắt dùng trong search, search-suggest
+    window.searchUrl = "{{ route('search.suggestions') }}";
+    window.productUrl = "{{ route('product.show', ['product_id' => 'PRODUCT_ID']) }}";
+    window.imagesUrl = "{{ asset('public/images') }}";
+</script>
+  <script src="{{ asset('resources/js/search_suggest.js') }}"> </script>
