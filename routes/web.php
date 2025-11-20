@@ -69,4 +69,5 @@ Route::middleware([UserMiddleware::class])->group(function(){
     Route::post('/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
     //hiển thị trang order theo tên người dùng
     Route::get('/order/{username}', [UserOrderController::class, 'index'])->name('order.index');
+    Route::get('/order/{username}/{order_id}', [UserOrderController::class, 'show'])->name('order.show');
 });

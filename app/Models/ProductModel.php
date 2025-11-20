@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProductModel extends Model
 {
-        use HasFactory;
+    use HasFactory;
 
     protected $table = 'products'; // tên bảng trong DB
 
-    protected $fillable = [//lấy những dữ liệu trong DB
+    protected $fillable = [ //lấy những dữ liệu trong DB
         'product_id',
         'product_name',
         'product_image',
@@ -21,25 +21,27 @@ class ProductModel extends Model
         'category',
     ];
     public function getFinalPriceAttribute()
-{
-    if ($this->discount > 0) {
-        return $this->product_cost * (1 - $this->discount / 100);
+    {
+        if ($this->discount > 0) {
+            return $this->product_cost * (1 - $this->discount / 100);
+        }
+
+        return $this->product_cost;
     }
 
-    return $this->product_cost;
-}
-
-public function branches()
-{
-    return $this->belongsToMany(
-        BranchModel::class,      // Model bên kia
-        'branch_inventory',      // Tên bảng pivot
-        'product_id',            // FK của product trong pivot
-        'branch_id'              // FK của branch trong pivot
-    )
-    ->withPivot('quantity')
-    ->withTimestamps();
-}
-
-
+    public function branches()
+    {
+        return $this->belongsToMany(
+            BranchModel::class,      // Model bên kia
+            'branch_inventory',      // Tên bảng pivot
+            'product_id',            // FK của product trong pivot
+            'branch_id'              // FK của branch trong pivot
+        )
+            ->withPivot('quantity')
+            ->withTimestamps();
+    }
+    public function specification()
+    {
+        return $this->hasOne(ProductSpecsModel::class, 'product_id');
+    }
 }

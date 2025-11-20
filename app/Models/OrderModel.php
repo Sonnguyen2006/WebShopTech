@@ -13,10 +13,12 @@ class OrderModel extends Model
         'total_amount', 'status', 'payment_method'
     ];
 
+    
     public function orderDetails()
-    {
-        return $this->hasMany(OrderDetail::class, 'order_id', 'order_id');
-    }
+{
+    return $this->hasMany(OrderDetail::class, 'order_id', 'order_id');
+}
+
     public function user()
     {
         return $this->belongsTo(UserModel::class, 'user_id', 'user_id');
