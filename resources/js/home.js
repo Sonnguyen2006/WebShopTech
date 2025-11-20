@@ -22,14 +22,18 @@
   }
 
   nextBtn.addEventListener('click', () => {
+    //nếu index hiện tại >0 (không nằm vị trí cuối) thì tiến lên
     if (currentIndex < maxIndex) currentIndex++;
     updateView();
   });
-
+  //đặt sự kiễn sau khi click
   prevBtn.addEventListener('click', () => {
+    //nếu index hiện tại >0 (không nằm vị trí đầu) thì quay ngược lại
     if (currentIndex > 0) currentIndex--;
     updateView();
   });
 
   // Khởi tạo
   updateView();
+  
+
