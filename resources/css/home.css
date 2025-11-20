@@ -111,4 +111,58 @@ body {
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* thêm bóng cho đẹp */
             z-index: 2; /* nổi lên trên các thẻ khác */
         }
-        
+        .product-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 20px;
+          }
+          
+          .carousel-viewport {
+            overflow: hidden;
+            width: 100%;
+          }
+          
+          .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 1rem;
+            margin-bottom: 1rem;
+          }
+          
+          .product-card {
+            flex: 0 0 25%; /* 4 cột mỗi lần hiển thị */
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 10px;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+          }
+          .product-card:hover {
+            transform: scale(1.05);
+          }
+          .product-card img {
+            width: 100%;
+            border-radius: 10px;
+          }
+          
+          .carousel-btn {
+            position: absolute;
+            top: 45%;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+          }
+          .carousel-btn.prev { left: 10px; }
+          .carousel-btn.next { right: 10px; }
+          .transition {
+            transition: transform 0.4s ease-in-out;
+          }
+          

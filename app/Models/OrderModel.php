@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class OrderModel extends Model
 {
     protected $table = 'orders';
+    protected $primaryKey = 'id'; // hoặc 'order_id'
     protected $fillable = [
         'order_id','user_id', 'username', 'email', 'address', 
         'total_amount', 'status', 'payment_method'
@@ -15,5 +16,9 @@ class OrderModel extends Model
     public function orderDetails()
     {
         return $this->hasMany(OrderDetail::class, 'order_id', 'order_id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(UserModel::class, 'user_id', 'user_id');
     }
 }

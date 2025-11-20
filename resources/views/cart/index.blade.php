@@ -18,18 +18,20 @@
         <tbody>
             @php $total = 0; @endphp
             @foreach(session('cart') as $id => $product)
-            @php $total += $product['product_price'] * $product['quantity']; @endphp
+            @php $total += $product['product_cost'] * $product['quantity']; @endphp
             <tr>
                 <td>{{ $product['product_name'] }}</td>
                 <td><img src="{{ asset('public/images/' . $product['product_image']) }}" width="60"></td>
-                <td>{{ number_format($product['product_price']) }}₫</td>
+                <td>{{ number_format($product['product_cost']) }}₫</td>
                 <td> {{number_format($product['quantity'])}}</td>
-                <td>{{ number_format($product['product_price'] * $product['quantity'], 0, ',', '.') }}₫</td>
+                <td>{{ number_format($product['product_cost'] * $product['quantity'], 0, ',', '.') }}₫</td>
                 <td>
                     <form action="{{ route('cart.remove') }}" method="POST" style="display:inline-block;">
                         @csrf
                         <input type="hidden" name="id" value="{{ $id }}">
-                        <button type="submit" class="btn-remove">Xóa</button>
+                        <button type="submit" class="btn-remove">
+                            <i class="bi bi-trash"></i>
+                        </button>
                     </form>
                 </td>
             </tr>

@@ -29,9 +29,9 @@
     </div>
 
     <!-- Banner & Slider -->
-    <div class="col-md-8">
+    <div class="col-md-9">
       <!-- Carousel -->
-      <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel" >
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="<?php echo e(asset('public/images/banner/1.png')); ?>" class="d-block w-100" alt="banner">
@@ -54,60 +54,51 @@
   <div class="row">
     <div id="productCarousel" class="carousel slide" data-bs-wrap="false">
       <div class="carousel-inner">
-
-        
-        <div class="carousel-item active">
-          <div class="row row-cols-1 row-cols-md-4 g-4">
-            <?php $__currentLoopData = $products->slice(0, 8); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
-            <div class="col">
-              <div class="card h-100" onclick="window.location.href='<?php echo e(url('/product/' . $product->product_id)); ?>'" style="cursor:pointer;">
-                <img src="<?php echo e(asset('public/images/' . $product->product_image)); ?>" class="card-img-top" alt="<?php echo e($product->product_name); ?>">
-                <div class="card-body d-flex flex-column">
-                  <h6 class="card-title"><?php echo e($product->product_name); ?></h6>
-                  <p class="fw-bold text-danger">
-                    <?php if($product->discount > 0): ?>
-                    <?php echo e(number_format($product->final_price, 0, ',', '.')); ?>₫
-                    <span class="text-decoration-line-through text-muted ms-2">
-                      <?php echo e(number_format($product->product_cost, 0, ',', '.')); ?>₫
-                    </span>
-                    <?php else: ?>
-                    <?php echo e(number_format($product->product_cost, 0, ',', '.')); ?>₫
-                    <?php endif; ?>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+      <div class="container my-4 position-relative">
+  <div class="product-slider overflow-hidden">
+    <div class="row flex-nowrap transition" id="oddRow">
+      <?php $__currentLoopData = $products->where(fn($p, $i) => $i % 2 == 0); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <div class="col-3">
+        <div class="card h-100" onclick="window.location.href='<?php echo e(url('/product/' . $product->product_id)); ?>'" style="cursor:pointer;">
+          <img src="<?php echo e(asset('public/images/' . $product->product_image)); ?>" class="card-img-top" alt="<?php echo e($product->product_name); ?>">
+          <div class="card-body">
+            <h6 class="card-title"><?php echo e($product->product_name); ?></h6>
+            <p class="fw-bold text-danger mb-0">
+              <?php if($product->discount > 0): ?>
+              <?php echo e(number_format($product->final_price, 0, ',', '.')); ?>₫
+              <span class="text-decoration-line-through text-muted ms-2"><?php echo e(number_format($product->product_cost, 0, ',', '.')); ?>₫</span>
+              <?php else: ?>
+              <?php echo e(number_format($product->product_cost, 0, ',', '.')); ?>₫
+              <?php endif; ?>
+            </p>
           </div>
         </div>
-
-        
-        <div class="carousel-item">
-          <div class="row row-cols-1 row-cols-md-4 g-4">
-            <?php $__currentLoopData = $products->slice(8, 8); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div class="col">
-              <div class="card h-100" onclick="window.location.href='<?php echo e(url('/product/' . $product->product_id)); ?>'" style="cursor:pointer;">
-                <img src="<?php echo e(asset('public/images/' . $product->product_image)); ?>" class="card-img-top" alt="<?php echo e($product->product_name); ?>">
-                <div class="card-body d-flex flex-column">
-                  <h6 class="card-title"><?php echo e($product->product_name); ?></h6>
-                  <p class="fw-bold text-danger">
-                    <?php if($product->discount > 0): ?>
-                    <?php echo e(number_format($product->final_price, 0, ',', '.')); ?>₫
-                    <span class="text-decoration-line-through text-muted ms-2">
-                      <?php echo e(number_format($product->product_cost, 0, ',', '.')); ?>₫
-                    </span>
-                    <?php else: ?>
-                    <?php echo e(number_format($product->product_cost, 0, ',', '.')); ?>₫
-                    <?php endif; ?>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-          </div>
-        </div>
-
       </div>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    </div>
+
+    <div class="row flex-nowrap transition mt-3" id="evenRow">
+      <?php $__currentLoopData = $products->where(fn($p, $i) => $i % 2 == 1); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <div class="col-3">
+        <div class="card h-100" onclick="window.location.href='<?php echo e(url('/product/' . $product->product_id)); ?>'" style="cursor:pointer;">
+          <img src="<?php echo e(asset('public/images/' . $product->product_image)); ?>" class="card-img-top" alt="<?php echo e($product->product_name); ?>">
+          <div class="card-body">
+            <h6 class="card-title"><?php echo e($product->product_name); ?></h6>
+            <p class="fw-bold text-danger mb-0">
+              <?php if($product->discount > 0): ?>
+              <?php echo e(number_format($product->final_price, 0, ',', '.')); ?>₫
+              <span class="text-decoration-line-through text-muted ms-2"><?php echo e(number_format($product->product_cost, 0, ',', '.')); ?>₫</span>
+              <?php else: ?>
+              <?php echo e(number_format($product->product_cost, 0, ',', '.')); ?>₫
+              <?php endif; ?>
+            </p>
+          </div>
+        </div>
+      </div>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    </div>
+  </div>
+
 
       
       <!-- Prev -->

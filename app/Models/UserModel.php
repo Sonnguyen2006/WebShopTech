@@ -21,4 +21,8 @@ class UserModel extends Authenticatable
     public function __construct() {
     
     }
+    public function orders()
+    {
+        return $this->hasMany(OrderModel::class, 'user_id', 'user_id');
+    }
 }
