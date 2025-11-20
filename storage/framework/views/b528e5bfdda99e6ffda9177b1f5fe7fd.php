@@ -1,10 +1,14 @@
 <?php $__env->startSection('content'); ?>
+<?php
+// Kiểm tra còn hàng bất kỳ chi nhánh nào
+$inStock = $product->branches->contains(fn($b) => $b->pivot->quantity > 0);
+?>
 <div class="container my-5">
   <div class="row">
     <div class="col-md-5">
-      <img src="<?php echo e(asset('public/images/' . $product->product_image)); ?>" 
-           class="img-fluid rounded" 
-           alt="<?php echo e($product->product_name); ?>">
+      <img src="<?php echo e(asset('public/images/' . $product->product_image)); ?>"
+        class="img-fluid rounded"
+        alt="<?php echo e($product->product_name); ?>">
     </div>
     <!-- Thông tin sản phẩm -->
     <div class="col-md-7">
@@ -22,8 +26,8 @@
       <?php endif; ?>
 
       <!-- Giá sản phẩm trong khung xanh biển -->
-      <div class="border border-primary rounded p-3 my-3" 
-           style="background-color: #e7f3ff; display: inline-block;">
+      <div class="border border-primary rounded p-3 my-3"
+        style="background-color: #e7f3ff; display: inline-block;">
         <span class="fw-bold text-primary" style="font-size: 1.4rem;">
           <?php echo e(number_format($product->final_price, 0, ',', '.')); ?>đ
         </span>
@@ -31,17 +35,25 @@
 
       <!-- Mô tả -->
       <div class="mt-3">
-        <h5 class="fw-semibold mb-2">Mô tả sản phẩm</h5>  
+        <h5 class="fw-semibold mb-2">Mô tả sản phẩm</h5>
         <p class="text-secondary" style="white-space: pre-line;"><?php echo e($product->description); ?></p>
       </div>
+      <?php if($inStock): ?>
+      
       <form action="<?php echo e(route('cart.add', $product->product_id)); ?>" method="POST" class="mt-4">
         <?php echo csrf_field(); ?>
         <button type="submit" class="btn btn-danger btn-lg">
           <i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng
         </button>
       </form>
-
-      <a href="<?php echo e(url()->previous()); ?>" class="btn btn-outline-secondary mt-3">⬅ Quay lại</a>
+      <?php else: ?>
+      
+      <div class="mt-4">
+        <button class="btn btn-secondary btn-lg w-100" disabled>
+          Hết hàng
+        </button>
+      </div>
+      <?php endif; ?>
     </div>
   </div>
 </div>
