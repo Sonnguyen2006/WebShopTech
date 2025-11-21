@@ -18,12 +18,6 @@ use App\Http\Controllers\Admin\UserManagementController;
 
 
 use Illuminate\Support\Facades\Auth;
-
-    
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::prefix('admin')->middleware([AdminMiddleware::class])->group(function(){
     Route::get('/', [AdminController::class, 'admin'])->name('admin');
     Route::get('/api/revenue', [AdminController::class, 'getRevenue'])->name('api.revenue');
