@@ -45,6 +45,20 @@ Route::prefix('admin')->middleware([AdminMiddleware::class])->group(function(){
     Route::get('/users/create', [UserManagementController::class, 'create'])->name('users.create');
     Route::post('/users', [UserManagementController::class, 'store'])->name('users.store');
     Route::post('/logout', [AdminController::class, 'logout'])->name('admin.logout');
+     // Sửa sản phẩm
+    Route::get('products', [AdminProductController::class,'index'])->name('admin.ProductManagement');
+    Route::get('products/edit/{id}', [AdminProductController::class,'edit'])->name('admin.products.edit');
+    Route::post('products/edit/{id}', [AdminProductController::class,'update'])->name('admin.products.update');
+
+    // Xóa sản phẩm
+    Route::delete('products/delete/{product_id}', [AdminProductController::class,'destroy'])->name('admin.delete');
+
+    // Xác nhận sản phẩm
+    Route::post('products/confirm/{product_id}', [AdminProductController::class,'ProductConfirm'])->name('admin.confirm');
+
+    // Cập nhật trạng thái sản phẩm
+    Route::post('products/updateStatus/{product_id}', [AdminProductController::class,'UpdateStatus'])->name('admin.updateStatus');
+
 });
 
 

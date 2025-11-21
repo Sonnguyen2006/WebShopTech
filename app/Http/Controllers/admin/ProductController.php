@@ -21,7 +21,7 @@ class ProductController extends Controller
             'description'=>'required|string',
             'category'=>'required|string',
             'product_image'=>'required|image|mimes:jpg,jpeg,png|max:2048',
-            'rating'=>'nullable|integer|min:1|max:5',
+       
 
         ]);
           $imageName = null;
@@ -40,7 +40,7 @@ class ProductController extends Controller
             'description'=>$request->description,
             'category'=>$request->category,
             'product_image'=>$imageName,
-            'rating' => $request->rating ?? 0,
+           
 
         ]);
         return redirect('/admin')->with('success','Thêm sản phẩm thành công!');
@@ -78,6 +78,91 @@ class ProductController extends Controller
         // Trả về view promotion.blade.php
         return view('products.promotion', compact('products'));
     }
+   public function index()
+    {
+        $products = ProductModel::latest()->get(); // lấy theo thời gian tạo gần nhất
+        return view('admin.ProductManagement', compact('products'));
+    }
+    public function edit($product_id)
+    {
+        $products = ProductModel::where('product_id', $product_id)->firstOrFail();
+        return view('admin.product.ProductManagementEdit', compact('products'));
+    }
+
+    // Xác nhận sản phẩm (bật trạng thái active)
+public function update(Request $request, $product_id)
+    {
+        $request->validate([
+            'product_name'=>'required|string|max:255',
+            'product_cost'=>'required|numeric',
+            'discount'=>'required|numeric',
+            'description'=>'required|string',
+            'category'=>'required|string',
+            'product_image'=>'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $products = ProductModel::findOrFail($product_id);
+
+        // Xử lý ảnh nếu có
+        if ($request->hasFile('product_image')) {
+            // Xóa ảnh cũ nếu có
+            if ($products->product_image && file_exists(public_path('images/'.$products->product_image))) {
+                unlink(public_path('images/'.$products->product_image));
+            }
+
+            $image = $request->file('product_image');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+            $products->product_image = $imageName;
+        }
+
+        // Cập nhật thông tin sản phẩm
+        $products->update([
+            'product_name'=>$request->product_name,
+            'product_cost'=>$request->product_cost,
+            'discount'=>$request->discount,
+            'description'=>$request->description,
+            'category'=>$request->category,
+        ]);
+
+        return redirect()->route('admin.ProductManagement')
+                         ->with('success', 'Cập nhật sản phẩm thành công!');
+    }
+
+    // Cập nhật trạng thái sản phẩm
+    public function UpdateStatus(Request $request, $product_id)
+    {
+        $request->validate([
+            'status' => 'required|string',
+        ]);
+
+        $product = ProductModel::findOrFail($product_id);
+        $product->update([
+            'status' => $request->status
+        ]);
+        $product->save();
+
+        return redirect()->route('admin.ProductManagement')
+                         ->with('success', 'Cập nhật trạng thái sản phẩm thành công!');
+    }
+
+    // Xóa sản phẩm
+    public function destroy($product_id)
+    {
+        $product = ProductModel::findOrFail($product_id);
+
+        // Xóa ảnh nếu có
+        if ($product->product_image && file_exists(public_path('images/'.$product->product_image))) {
+            unlink(public_path('images/'.$product->product_image));
+        }
+
+        $product->delete();
+
+        return redirect()->route('admin.ProductManagement')
+                         ->with('success', 'Xóa sản phẩm thành công!');
+    }
+    
 }
+
 
 
