@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function show($product_id ){
-        //lấy từ DB sản phẩm có id giống trên name
-        $product = ProductModel::where('product_id', $product_id )->FirstOrFail();
-        return view ('products.show',compact('product'));
+    public function show($product_id)
+    {
+        $product = ProductModel::with(['specification', 'branches'])
+            ->where('product_id', $product_id)
+            ->firstOrFail();
+
+        return view('products.show', compact('product'));
     }
     public function category($slug)
     {

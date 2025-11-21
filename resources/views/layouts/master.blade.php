@@ -5,104 +5,141 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TechShop</title>
-  <!-- Bootstrap CSS -->
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ asset('resources/css/home.css') }}">
+  <!-- Bootstrap + Icon -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="{{ asset('resources/css/master.css') }}">
-  <link rel="stylesheet" href="{{ asset('resources/css/home.css') }}">
+
+
   @yield('styles')
+  <style>
+      #search-input {
+            border-radius: 10px 0 0 10px !important;
+            padding-left: 15px !important;
+        }
+
+      .btn-search {
+          border-radius: 0 10px 10px 0;
+          font-weight: bold;
+      }
+  </style>  
 </head>
 
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-  
-  <div class="container-fluid">
-    <div class="logo">
-  <a href="/" class="text-black text-decoration-none">
-    <img src="{{ asset('public/images/logo/Copilot_20251007_105042.png') }}" 
-         alt="Logo" class="img-fluid" style="max-height:100px;">
-  </a>
-</div>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+      <div class="container-fluid">
 
-   
-
-      <!-- Button responsive -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Nội dung navbar -->
-      <form action="{{ route('products.search') }}" method="get" class="d-flex me-4 position-relative" style="width: 400px;">
-        <input class="form-control me-2" type="text" id="search-input" name="keyword" placeholder="Bạn muốn mua gì hôm nay?">
-        <button class="btn btn-light" type="submit">Tìm</button>
-        <div id="suggestions-box" class="list-group position-absolute w-100" style="z-index:1050; top:100%; left:0; max-height:300px; overflow-y:auto;"></div>
-      </form>
-
-
-
-      <!-- Menu Giỏ hàng & Đăng nhập -->
-      <ul class="navbar-nav align-items-center">
-        <!-- Giỏ hàng -->
-        <li class="nav-item me-3">
-          <a href="{{route('cart.index')}}" class="nav-link text-white position-relative">
-            <i class="fa fa-shopping-cart fa-lg"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
-              {{ session('cart_count', 0) }}
-            </span>
-            Giỏ hàng
+          <!-- Logo -->
+          <a class="navbar-brand fw-bold text-white" href="{{ route('home') }}">
+              TechShop
           </a>
-        </li>
 
-        <!-- Đăng nhập -->
-        @guest
-        <li class="nav-item">
-          <a href="{{ route('login') }}" class="nav-link text-white">
-            <i class="fa fa-user"></i> Đăng nhập
-          </a>
-        </li>
-        @else
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-            <i class="fa fa-user-circle"></i> {{ Auth::user()->name }}
-          </a>
-          <div class="dropdown-menu dropdown-menu-end">
-            <a class="dropdown-item" href="#" style="color: blue !important;">Thông tin cá nhân</a>
-            <a class="dropdown-item" href="{{route('order.index' , ['username' => Auth::user()->name])}}" style="color: blue !important;">Lịch sử mua hàng</a>
-            <a class="dropdown-item" href="{{ route('logout') }}" style="color: red !important;"
-              onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-              Đăng xuất
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-              @csrf
-            </form>
+          <!-- Responsive -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+
+              <!-- Search -->
+              <form action="{{ route('products.search') }}" method="GET"
+                    class="d-flex mx-auto position-relative" style="width: 420px;">
+                  <input type="text" id="search-input" class="form-control"
+                         name="keyword" placeholder="Bạn muốn mua gì hôm nay?">
+
+                  <button class="btn btn-light btn-search" type="submit">Tìm</button>
+
+                  <div id="suggestions-box"
+                       class="list-group position-absolute w-100"
+                       style="z-index: 2000; top:100%; left:0; max-height:300px; overflow-y:auto;">
+                  </div>
+              </form>
+
+              <!-- Right Menu -->
+              <ul class="navbar-nav ms-auto align-items-center">
+
+                  <!-- Cart -->
+                  <li class="nav-item me-3">
+                      <a href="{{route('cart.index')}}" class="nav-link text-white position-relative">
+                          <i class="bi bi-cart3 fs-4"></i>
+                          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning cart-badge">
+                              {{ session('cart_count', 0) }}
+                          </span>
+                          Giỏ hàng
+                      </a>
+                  </li>
+
+                  <!-- Login -->
+                  @guest
+                      <li class="nav-item">
+                          <a href="{{ route('login') }}" class="nav-link text-white">
+                              <i class="bi bi-person-circle"></i> Đăng nhập
+                          </a>
+                      </li>
+                  @else
+                      <!-- User Dropdown -->
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown"
+                             data-bs-toggle="dropdown">
+                              <i class="bi bi-person-circle"></i> {{ Auth::user()->name }}
+                          </a>
+
+                          <ul class="dropdown-menu dropdown-menu-end shadow">
+                              <li><a class="dropdown-item" href="{{ route('profile.show', Auth::user()->user_id) }}" style="color: blue !important;">Thông tin cá nhân</a></li>
+                              <li><a class="dropdown-item"  href="{{ route('users.change-password', Auth::user()->user_id) }}"   style="color: blue !important;">Đổi mật khẩu</a></li>
+                              <li><a class="dropdown-item" href="{{route('order.index' , ['username' => Auth::user()->name])}}" style="color: blue !important;">Lịch sử mua hàng</a></li>
+
+                              <li><hr class="dropdown-divider"></li>
+
+                              <li>
+                                  <a class="dropdown-item text-danger" href="{{ route('logout') }} " style="color: red !important;"
+                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                      Đăng xuất
+                                  </a>
+                              </li>
+
+                              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                  @csrf
+                              </form>
+                          </ul>
+                      </li>
+                  @endguest
+
+              </ul>
+
           </div>
-        </li>
-        @endguest
-      </ul>
-    </div>
-    </div>
-  </nav>
-  <main class="py-4">
-    @yield('content')
-  </main>
-  <footer class="bg-light border-top py-4 mt-auto">
-    <div class="container text-center small">
-      &copy; {{ date('Y') }} TechShop. All rights reserved.
-      <div>
-        <a>Điều khoản</a> · <a>Quyền riêng tư</a>
       </div>
-    </div>
-  </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </nav>
 
-  <script src="{{ asset('resources/js/home.js') }}"></script>
+  <!-- MAIN CONTENT -->
+  <main class="py-4">
+      @yield('content')
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-top py-4">
+      <div class="container text-center small">
+          © {{ date('Y') }} TechShop. All rights reserved.
+          <div class="mt-1">
+              <a>Điều khoản</a> · <a>Quyền riêng tư</a>
+          </div>
+      </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
   <script>
-    //tạo các biến co đường dẫn tắt dùng trong search, search-suggest
-    window.searchUrl = "{{ route('search.suggestions') }}";
-    window.productUrl = "{{ route('product.show', ['product_id' => 'PRODUCT_ID']) }}";
-    window.imagesUrl = "{{ asset('public/images') }}";
-</script>
-  <script src="{{ asset('resources/js/search_suggest.js') }}"> </script>
+      window.searchUrl = "{{ route('search.suggestions') }}";
+      window.productUrl = "{{ route('product.show', ['product_id' => 'PRODUCT_ID']) }}";
+      window.imagesUrl = "{{ asset('public/images') }}";
+  </script>
+
+  <script src="{{ asset('resources/js/search_suggest.js') }}"></script>
+</body>
+
+</html>

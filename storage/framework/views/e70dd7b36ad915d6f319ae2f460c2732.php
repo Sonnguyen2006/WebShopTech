@@ -1,54 +1,81 @@
 <?php $__env->startSection('content'); ?>
 <link rel="stylesheet" href="<?php echo e(asset('resources/css/home.css')); ?>">
 <!-- Content -->
-<div class="container mt-3">
+<div class="container mt-4">
   <div class="row">
-    <!-- Sidebar category -->
+
+    <!-- SIDEBAR CATEGORY -->
     <div class="col-md-3">
-      <div class="category-menu shadow-sm">
-        <div class="category-menu shadow-sm">
+      <div class="category-box shadow-sm">
 
-          <div class="category-item">
-            <a href="<?php echo e(route('category.show', 'dien-thoai')); ?>" class="<?php echo e(isset($categoryName) && $categoryName=='Điện thoại' ? 'active' : ''); ?>">Điện thoại</a>
-          </div>
-          <div class="category-item">
-            <a href="<?php echo e(route('category.show', 'laptop')); ?>" class="<?php echo e(isset($categoryName) && $categoryName=='Laptop' ? 'active' : ''); ?>">Laptop</a>
-          </div>
-          <div class="category-item">
-            <a href="<?php echo e(route('category.show', 'tai-nghe')); ?>" class="<?php echo e(isset($categoryName) && $categoryName=='Tai nghe' ? 'active' : ''); ?>">Tai nghe</a>
-          </div>
-          <div class="category-item">
-            <a href="<?php echo e(route('category.show', 'man-hinh')); ?>" class="<?php echo e(isset($categoryName) && $categoryName=='Màn hình' ? 'active' : ''); ?>">Màn hình</a>
-          </div>
-          <div class="category-item">
-            <a href="<?php echo e(route('promotion')); ?>" class="<?php echo e(isset($categoryName) && $categoryName=='Khuyến mãi' ? 'active' : ''); ?>">Khuyến mãi</a>
-          </div>
+        <div class="category-item">
+          <a href="<?php echo e(route('category.show', 'dien-thoai')); ?>"
+             class="<?php echo e(isset($categoryName) && $categoryName=='Điện thoại' ? 'active' : ''); ?>">
+            <i class="bi bi-phone"></i> Điện thoại
+          </a>
         </div>
+
+        <div class="category-item">
+          <a href="<?php echo e(route('category.show', 'laptop')); ?>"
+             class="<?php echo e(isset($categoryName) && $categoryName=='Laptop' ? 'active' : ''); ?>">
+            <i class="bi bi-laptop"></i> Laptop
+          </a>
+        </div>
+
+        <div class="category-item">
+          <a href="<?php echo e(route('category.show', 'tai-nghe')); ?>"
+             class="<?php echo e(isset($categoryName) && $categoryName=='Tai nghe' ? 'active' : ''); ?>">
+            <i class="bi bi-headphones"></i> Tai nghe
+          </a>
+        </div>
+
+        <div class="category-item">
+          <a href="<?php echo e(route('category.show', 'man-hinh')); ?>"
+             class="<?php echo e(isset($categoryName) && $categoryName=='Màn hình' ? 'active' : ''); ?>">
+            <i class="bi bi-display"></i> Màn hình
+          </a>
+        </div>
+
+        <div class="category-item">
+          <a href="<?php echo e(route('promotion')); ?>"
+             class="<?php echo e(isset($categoryName) && $categoryName=='Khuyến mãi' ? 'active' : ''); ?>">
+            <i class="bi bi-tag"></i> Khuyến mãi
+          </a>
+        </div>
+
       </div>
     </div>
 
-    <!-- Banner & Slider -->
+    <!-- BANNER SLIDER -->
     <div class="col-md-9">
-      <!-- Carousel -->
-      <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="<?php echo e(asset('public/images/banner/1.png')); ?>" class="d-block w-100" alt="banner">
+      <div class="banner-slider shadow-sm">
+        <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="<?php echo e(asset('public/images/banner/1.png')); ?>" class="d-block w-100 banner-img" alt="banner">
+            </div>
+
+            <div class="carousel-item">
+              <img src="<?php echo e(asset('public/images/banner/2.png')); ?>" class="d-block w-100 banner-img" alt="banner">
+            </div>
           </div>
-          <div class="carousel-item">
-            <img src="<?php echo e(asset('public/images/banner/2.png')); ?>" class="d-block w-100" alt="banner">
-          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon banner-control"></span>
+          </button>
+
+          <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon banner-control"></span>
+          </button>
+
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </button>
       </div>
     </div>
+
   </div>
 </div>
+
 <div class="container main mt-4">
   <div class="row">
     <div id="productCarousel" class="carousel slide" data-bs-wrap="false">

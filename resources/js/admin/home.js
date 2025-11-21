@@ -6,3 +6,4 @@ const toggleBtn = document.getElementById('toggleSidebar');
             sidebar.classList.toggle('active');
             wrapper.classList.toggle('sidebar-open');
         });
+    

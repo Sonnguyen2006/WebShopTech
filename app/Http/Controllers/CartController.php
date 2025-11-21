@@ -58,9 +58,8 @@ class CartController extends Controller
         // Tính tổng tiền
         $total_amount = 0;
         foreach ($cart as $item) {
-            $total_amount += $item['product_cost'] * (1 - $item['discount']/100) * $item['quantity'];
+            $total_amount += $item['product_cost'] * $item['quantity'];
         }
-
         // Tạo Order
         $order = OrderModel::create([
             'order_id'       => $order_id,
@@ -72,10 +71,8 @@ class CartController extends Controller
             'status'         => 'pending',
             'payment_method' => $request->payment_method ?? 'COD',
         ]);
-
         // Tạo OrderDetail cho từng sản phẩm
         foreach ($cart as $product_id => $item) {
-            
             $finalPrice = isset($item['discount']) && $item['discount'] > 0
                 ? $item['product_cost'] * (1 - $item['discount'] / 100)
                 : $item['product_cost'];
@@ -83,7 +80,7 @@ class CartController extends Controller
                 'order_id'   => $order_id,
                 'product_id' => $product_id,
                 'quantity'   => $item['quantity'],
-                'product_cost'      => $item['product_cost'],
+                'price'      => $item['product_cost'],
             ]);
         }
         Mail::to($order->email)->send(new OrderPlacedMail($order));

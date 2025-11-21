@@ -17,3 +17,18 @@ window.addEventListener('click', (event) => {
         modal.classList.remove('show');
     }
 });
+document.addEventListener("DOMContentLoaded", function () {
+    
+    const form = document.querySelector("#checkoutModal form");
+    const paymentSelect = document.querySelector("select[name='payment_method']");
+
+    form.addEventListener("submit", function (e) {
+
+        if (paymentSelect.value === "Online") {
+            e.preventDefault(); // chặn submit
+
+            alert("⚠️ Tính năng thanh toán Online chưa được cập nhật.\nVui lòng chọn phương thức khác!");
+        }
+    });
+
+});
