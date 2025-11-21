@@ -7,7 +7,7 @@
     <!-- Biểu đồ miền doanh thu -->
     <div class="card mb-4 shadow-sm">
         <div class="card-header bg-primary text-white">
-            Doanh thu theo tháng
+            Doanh thu theo ngày
         </div>
         <div class="card-body">
             <canvas id="revenueChart"
@@ -47,7 +47,10 @@
     fetch("{{ route('api.revenue') }}")
         .then(response => response.json())
         .then(data => {
-            const labels = data.map(item => "Tháng " + item.month);
+            // Lấy nhãn theo ngày
+            const labels = data.map(item => item.date);
+
+            // Lấy tổng doanh thu
             const totals = data.map(item => item.total);
 
             const ctx = document.getElementById('revenueChart').getContext('2d');
@@ -57,16 +60,18 @@
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Doanh thu',
+                        label: 'Doanh thu theo ngày',
                         data: totals,
                         borderColor: 'rgb(75, 192, 192)',
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderWidth: 2
+                        borderWidth: 2,
+                        tension: 0.3
                     }]
                 }
             });
         });
 </script>
+
 
 
 @endsection
