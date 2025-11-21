@@ -33,14 +33,16 @@ Route::prefix('admin')->middleware([AdminMiddleware::class])->group(function(){
         ->name('order');
 
     // ✅ Cập nhật trạng thái đơn hàng
-    Route::patch('/admin/orders/update-status/{order_id}', [AdminOrderController::class, 'UpdateStatus'])
+    Route::patch('/orders/update-status/{order_id}', [AdminOrderController::class, 'UpdateStatus'])
         ->name('orders.updateStatus');
         // Trang chi tiết người dùng
     Route::get('/users/{user_id}', [UserManagementController::class, 'show'])->name('admin.users.show');
     Route::get('/user_management',[UserManagementController::class,'index'])->name('edit_users');
     Route::delete('/users/{id}', [UserManagementController::class, 'destroy'])->name('users.destroy');
-    Route::get('/admin/users/create', [UserManagementController::class, 'create'])->name('users.create');
-    Route::post('/admin/users', [UserManagementController::class, 'store'])->name('users.store');
+    Route::get('/users/create', [UserManagementController::class, 'create'])->name('users.create');
+    Route::post('/users', [UserManagementController::class, 'store'])->name('users.store');
+    Route::get('/users/{id}/edit', [UserManagementController::class, 'edit'])->name('admin.users.edit');
+    Route::post('/users/{id}/update', [UserManagementController::class, 'update'])->name('admin.users.update');
 });
 
 

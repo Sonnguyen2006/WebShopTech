@@ -25,6 +25,32 @@ class UserManagementController extends Controller
                     ->paginate(8);
         return view('admin.user_management.show',compact('user','orders'));
     }
+    public function edit($id)
+    {
+        $user = UserModel::findOrFail($id);
+        return view('admin.user_management.edit', compact('user'));
+    }
+    public function update(Request $request, $id)
+    {
+        $user = UserModel::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,'. $id . ',user_id',
+            'password' => 'nullable|min:6',
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        if ($request->password) {
+            $user->password = bcrypt($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'Cập nhật thành công!');
+    }
     public function destroy($id)
     {
         //bắt đầu transaction delecte

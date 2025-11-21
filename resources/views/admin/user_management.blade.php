@@ -54,7 +54,7 @@
                 <a href="{{ route('admin.users.show', $item->user_id) }}" class="btn btn-sm btn-info text-white" title="Xem chi tiết">
                     <i class="bi bi-eye"></i>
                 </a>
-                <a href="#}" class="btn btn-sm btn-warning text-white" title="Sửa">
+                <a href="{{route('admin.users.edit' , $item->user_id)}}" class="btn btn-sm btn-warning text-white" title="Sửa">
                     <i class="bi bi-pencil-square"></i>
                 </a>
                 <!-- dùng transaction delect để xóa đi users mong muốn -->
