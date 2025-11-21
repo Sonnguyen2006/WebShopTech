@@ -66,6 +66,8 @@ Route::get('/category/{slug}', [UserProductController::class, 'category'])->name
 Route::get('/promotion', [UserProductController::class, 'promotion'])->name('promotion');
 //show ra các sản phẩn đã cho vào giỏ hàng
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+// Route AJAX gợi ý autocomplete
+Route::get('/search-suggestions', [HomeController::class, 'suggestions'])->name('search.suggestions');
 Route::middleware([UserMiddleware::class])->group(function(){
     // xóa đơn hàng đã lựa chọn
     Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
