@@ -12,12 +12,16 @@ use Illuminate\Support\Facades\DB;
 class AdminController extends Controller
 {
     public function admin(){
-        $topUsers = UserModel::select('users.user_id', 'users.name', DB::raw('SUM(orders.total_amount) as total_spent'))
-    ->join('orders', 'orders.user_id', '=', 'users.user_id')
-    ->groupBy('users.user_id', 'users.name')
-    ->orderByDesc('total_spent')
-    ->limit(5)
-    ->get();
+        $topUsers = UserModel::select(
+            'users.user_id',
+            'users.name',
+            DB::raw('SUM(CAST(orders.total_amount AS SIGNED)) as total_spent')
+        )
+        ->join('orders', 'orders.user_id', '=', 'users.user_id')
+        ->groupBy('users.user_id', 'users.name')
+        ->orderByDesc('total_spent')
+        ->limit(5)
+        ->get();
     return view('admin.home', compact('topUsers'));
 }
 
