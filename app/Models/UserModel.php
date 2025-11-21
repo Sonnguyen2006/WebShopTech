@@ -18,9 +18,6 @@ class UserModel extends Authenticatable
        protected $hidden = [
         'password',
       ];
-    public function __construct() {
-    
-    }
     public function orders()
     {
         return $this->hasMany(OrderModel::class, 'user_id', 'user_id');

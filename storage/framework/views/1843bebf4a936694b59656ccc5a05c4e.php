@@ -91,6 +91,7 @@
 
                           <ul class="dropdown-menu dropdown-menu-end shadow">
                               <li><a class="dropdown-item" href="<?php echo e(route('profile.show', Auth::user()->user_id)); ?>" style="color: blue !important;">Thông tin cá nhân</a></li>
+                              <li><a class="dropdown-item"  href="<?php echo e(route('users.change-password', Auth::user()->user_id)); ?>"   style="color: blue !important;">Đổi mật khẩu</a></li>
                               <li><a class="dropdown-item" href="<?php echo e(route('order.index' , ['username' => Auth::user()->name])); ?>" style="color: blue !important;">Lịch sử mua hàng</a></li>
 
                               <li><hr class="dropdown-divider"></li>

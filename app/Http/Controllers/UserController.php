@@ -76,6 +76,35 @@ class UserController extends Controller
 
         return view('profile', compact('user', 'ordersByDate'));
     }
-    
+    public function showChangePasswordForm($id)
+    {
+        $user = UserModel::findOrFail($id); // lấy user theo id
+        return view('auth.change-password', compact('user'));
+    }
+    public function updatePassword(Request $request, $id)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|string|min:6|confirmed',
+        ],
+        [
+            'current_password.required' => 'Vui lòng nhập mật khẩu hiện tại',
+            'new_password.required' => 'Vui lòng nhập mật khẩu mới',
+            'new_password.min' => 'Mật khẩu mới phải có ít nhất 6 ký tự',
+            'new_password.confirmed' => 'Xác nhận mật khẩu mới không khớp', 
+        ]);
 
+        $user = UserModel::findOrFail($id);
+
+        // Kiểm tra mật khẩu hiện tại
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'Mật khẩu hiện tại không đúng']);
+        }
+
+        // Cập nhật mật khẩu mới
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return back()->with('success', 'Đổi mật khẩu thành công cho ' . $user->name);
+    }
 }

@@ -78,5 +78,7 @@ Route::middleware([UserMiddleware::class])->group(function(){
     Route::get('/order/{username}', [UserOrderController::class, 'index'])->name('order.index');
     Route::get('/order/{username}/{order_id}', [UserOrderController::class, 'show'])->name('order.show');
     Route::get('/profile/{id}', [UserController::class, 'profile'])->name('profile.show');
+    Route::get('/users/{id}/change-password', [UserController::class, 'showChangePasswordForm'])->name('users.change-password');
+    Route::post('/users/{id}/change-password', [UserController::class, 'updatePassword'])->name('users.update-password');
 
 });
