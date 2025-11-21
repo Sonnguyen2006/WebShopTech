@@ -40,7 +40,7 @@ class ProductController extends Controller
             'description'=>$request->description,
             'category'=>$request->category,
             'product_image'=>$imageName,
-            'rating'=>$request->rating,
+            'rating' => $request->rating ?? 0,
 
         ]);
         return redirect('/admin')->with('success','Thêm sản phẩm thành công!');

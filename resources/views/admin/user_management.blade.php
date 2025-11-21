@@ -8,10 +8,18 @@
   <div class="card shadow-sm border-0">
     <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
       <h5 class="mb-0">Danh sách người dùng</h5>
-      <a href="#" class="btn btn-light btn-sm">
-        <i class="bi bi-person-plus"></i> Thêm người dùng
+      <a href="{{route('users.create')}}" class="btn btn-light btn-sm">
+        <i class="bi bi-person-plus"></i>
       </a>
     </div>
+    @if (session('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('error') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  @endif
+
+
 
     <div class="card-body">
       <div class="table-responsive">
@@ -50,12 +58,13 @@
                     <i class="bi bi-pencil-square"></i>
                 </a>
                 <!-- dùng transaction delect để xóa đi users mong muốn -->
-                <form action="#" method="POST" class="d-inline">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-danger" title="Xoá" onclick="return confirm('Bạn chắc chắn muốn xóa người dùng này?')">
-                        <i class="bi bi-trash"></i>
-                    </button>
+                <form action="{{ route('users.destroy', $item->user_id) }}" method="POST" class="d-inline">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-sm btn-danger"
+                    onclick="return confirm('Bạn chắc chắn muốn xóa người dùng này?')">
+                    <i class="bi bi-trash"></i>
+                  </button>
                 </form>
             </td>
         </tr>
