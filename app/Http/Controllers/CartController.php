@@ -80,7 +80,7 @@ class CartController extends Controller
                 'order_id'   => $order_id,
                 'product_id' => $product_id,
                 'quantity'   => $item['quantity'],
-                'price'      => $item['product_cost'],
+                'product_cost'      => $item['product_cost'],
             ]);
         }
         Mail::to($order->email)->send(new OrderPlacedMail($order));

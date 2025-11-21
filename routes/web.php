@@ -60,6 +60,7 @@ Route::middleware(['web'])->group(function () {
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 });
 Route::get('/search', [HomeController::class, 'search'])->name('products.search');
+Route::get('/search_suggestions', [HomeController::class, 'searchSuggestions'])->name('search.suggestions');
 Route::get('/product/{product_id}', [UserProductController::class, 'show'])->name('product.show');
 Route::post('/cart/add/{product_id}', [CartController::class, 'add'])->name('cart.add');
 Route::get('/category/{slug}', [UserProductController::class, 'category'])->name('category.show');
