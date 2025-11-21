@@ -2,25 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ProductSpecsModel extends Model
 {
-    use HasFactory;
-    protected $table = 'product_specs';
-    protected $fillable = [
+    protected $table = 'product_specs'; // tên bảng trong DB
+
+    protected $fillable = [ //lấy những dữ liệu trong DB
         'product_id',
-        'screen',
+        'sceen',
         'size',
         'weight',
         'features',
-        'os'
+        'os',
     ];
-
-    public function product()
-    {
-        return $this->belongsTo(ProductModel::class);
+    public function product(){
+        return $this->belongsTo(ProductModel::class, 'product_id','product_id');
     }
-    
 }
+

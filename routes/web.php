@@ -41,8 +41,7 @@ Route::prefix('admin')->middleware([AdminMiddleware::class])->group(function(){
     Route::delete('/users/{id}', [UserManagementController::class, 'destroy'])->name('users.destroy');
     Route::get('/users/create', [UserManagementController::class, 'create'])->name('users.create');
     Route::post('/users', [UserManagementController::class, 'store'])->name('users.store');
-    Route::get('/users/{id}/edit', [UserManagementController::class, 'edit'])->name('admin.users.edit');
-    Route::post('/users/{id}/update', [UserManagementController::class, 'update'])->name('admin.users.update');
+    Route::post('/logout', [AdminController::class, 'logout'])->name('admin.logout');
 });
 
 
