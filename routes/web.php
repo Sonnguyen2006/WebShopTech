@@ -26,6 +26,7 @@ Route::get('/', function () {
 
 Route::prefix('admin')->middleware([AdminMiddleware::class])->group(function(){
     Route::get('/', [AdminController::class, 'admin'])->name('admin');
+    Route::get('/api/revenue', [AdminController::class, 'getRevenue'])->name('api.revenue');
     Route::get('/create',[AdminProductController::class,'createform'])->name('admin.createform');
     Route::post('/create',[AdminProductController::class,'create'])->name('create');
     // ✅ Trang quản lý tất cả đơn hàng

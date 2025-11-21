@@ -3,13 +3,33 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\OrderModel;
+use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
     public function admin(){
-        return view('admin.home');
+        $topUsers = UserModel::select('users.user_id', 'users.name', DB::raw('SUM(orders.total_amount) as total_spent'))
+    ->join('orders', 'orders.user_id', '=', 'users.user_id')
+    ->groupBy('users.user_id', 'users.name')
+    ->orderByDesc('total_spent')
+    ->limit(5)
+    ->get();
+    return view('admin.home', compact('topUsers'));
+}
+
+    public function getRevenue()
+    {
+        $revenues = DB::table('orders')
+            ->selectRaw('MONTH(created_at) as month, SUM(total_amount) as total')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
+
+        return response()->json($revenues);
     }
     public function logout()
 {
