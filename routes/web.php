@@ -39,6 +39,8 @@ Route::prefix('admin')->middleware([AdminMiddleware::class])->group(function(){
         // Trang chi tiết người dùng
     Route::get('/users/{user_id}', [UserManagementController::class, 'show'])->name('admin.users.show');
     Route::get('/user_management',[UserManagementController::class,'index'])->name('edit_users');
+    Route::get('/user_management/{id}',[UserManagementController::class,'edit'])->name('admin.users.edit');
+    Route::post('/user_management/{id}',[UserManagementController::class,'update'])->name('admin.users.update');
     Route::delete('/users/{id}', [UserManagementController::class, 'destroy'])->name('users.destroy');
     Route::get('/users/create', [UserManagementController::class, 'create'])->name('users.create');
     Route::post('/users', [UserManagementController::class, 'store'])->name('users.store');
