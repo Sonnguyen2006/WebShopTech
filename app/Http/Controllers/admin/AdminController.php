@@ -28,9 +28,9 @@ class AdminController extends Controller
     public function getRevenue()
     {
         $revenues = DB::table('orders')
-            ->selectRaw('MONTH(created_at) as month, SUM(total_amount) as total')
-            ->groupBy('month')
-            ->orderBy('month')
+            ->selectRaw('DATE(created_at) as date, SUM(total_amount) as total')
+            ->groupBy('date')
+            ->orderBy('date')
             ->get();
 
         return response()->json($revenues);
