@@ -77,4 +77,6 @@ Route::middleware([UserMiddleware::class])->group(function(){
     //hiển thị trang order theo tên người dùng
     Route::get('/order/{username}', [UserOrderController::class, 'index'])->name('order.index');
     Route::get('/order/{username}/{order_id}', [UserOrderController::class, 'show'])->name('order.show');
+    Route::get('/profile/{id}', [UserController::class, 'profile'])->name('profile.show');
+
 });
