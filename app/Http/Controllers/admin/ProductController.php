@@ -129,23 +129,6 @@ public function update(Request $request, $product_id)
                          ->with('success', 'Cập nhật sản phẩm thành công!');
     }
 
-    // Cập nhật trạng thái sản phẩm
-    public function UpdateStatus(Request $request, $product_id)
-    {
-        $request->validate([
-            'status' => 'required|string',
-        ]);
-
-        $product = ProductModel::findOrFail($product_id);
-        $product->update([
-            'status' => $request->status
-        ]);
-        $product->save();
-
-        return redirect()->route('admin.ProductManagement')
-                         ->with('success', 'Cập nhật trạng thái sản phẩm thành công!');
-    }
-
     // Xóa sản phẩm
     public function destroy($product_id)
     {
@@ -157,7 +140,6 @@ public function update(Request $request, $product_id)
         }
 
         $product->delete();
-
         return redirect()->route('admin.ProductManagement')
                          ->with('success', 'Xóa sản phẩm thành công!');
     }

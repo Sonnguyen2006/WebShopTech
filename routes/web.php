@@ -50,9 +50,6 @@ Route::prefix('admin')->middleware([AdminMiddleware::class])->group(function(){
     // Xác nhận sản phẩm
     Route::post('products/confirm/{product_id}', [AdminProductController::class,'ProductConfirm'])->name('admin.confirm');
 
-    // Cập nhật trạng thái sản phẩm
-    Route::post('products/updateStatus/{product_id}', [AdminProductController::class,'UpdateStatus'])->name('admin.updateStatus');
-
 });
 
 
