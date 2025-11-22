@@ -51,9 +51,9 @@
                             class="rounded"
                             style="object-fit: cover;">
                     </td>
-                    <td>{{ number_format($item->price, 0, ',', '.') }}₫</td>
+                    <td>{{ number_format($item->product_cost, 0, ',', '.') }}₫</td>
                     <td>{{ $item->quantity }}</td>
-                    <td>{{ number_format($item->quantity * $item->price, 0, ',', '.') }}₫</td>
+                    <td>{{ number_format($item->quantity * $item->product_cost, 0, ',', '.') }}₫</td>
                 </tr>
                 @endforeach
                 @else

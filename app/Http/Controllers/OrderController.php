@@ -30,7 +30,6 @@ class OrderController extends Controller
     
         // $order->orderDetails là collection, mỗi item có $item->product
         // Ví dụ debug:
-        
     
         return view('orders.show', compact('order'));
     }
