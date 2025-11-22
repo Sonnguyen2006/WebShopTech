@@ -34,7 +34,7 @@
                     <tr>
                         <td>{{ $item->product->product_name ?? 'Không có sản phẩm' }}</td>
                         <td>{{ $item->quantity ?? 0 }}</td>
-                        <td>{{ number_format($item->price ?? 0) }}đ</td>
+                        <td>{{ number_format($item->product_cost ?? 0) }}đ</td>
                     </tr>
                     @endforeach
                     @endforeach
